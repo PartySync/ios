@@ -1,0 +1,2 @@
+PODS_YOUPARTY__FIREBASE_FRAMEWORK_SEARCH_PATHS = "$(PODS_ROOT)/Firebase"
+PODS_YOUPARTY__FIREBASE_OTHER_LDFLAGS = -ObjC -lc++ -licucore -framework CFNetwork -framework Firebase -framework Security -framework SystemConfiguration
