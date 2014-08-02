@@ -384,6 +384,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = youparty2/Info.plist;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+>>>>>>> FETCH_HEAD
 =======
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 >>>>>>> FETCH_HEAD
@@ -400,6 +404,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = youparty2/Info.plist;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+>>>>>>> FETCH_HEAD
 =======
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 >>>>>>> FETCH_HEAD
