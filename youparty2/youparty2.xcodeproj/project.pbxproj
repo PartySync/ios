@@ -40,6 +40,11 @@
 		3861937F198D98230032987F /* MGTableBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 38619364198D98230032987F /* MGTableBox.m */; };
 		38619380198D98230032987F /* MGTableBoxStyled.m in Sources */ = {isa = PBXBuildFile; fileRef = 38619366198D98230032987F /* MGTableBoxStyled.m */; };
 		38619383198D983A0032987F /* YTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38619382198D983A0032987F /* YTViewController.m */; };
+		38619385198D99E80032987F /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38619384198D99E80032987F /* CoreText.framework */; };
+		38619387198D99F80032987F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38619386198D99F80032987F /* QuartzCore.framework */; };
+		38619389198D9A030032987F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38619388198D9A030032987F /* UIKit.framework */; };
+		3861938B198D9A0A0032987F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3861938A198D9A0A0032987F /* Foundation.framework */; };
+		3861938D198D9A120032987F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3861938C198D9A120032987F /* CoreGraphics.framework */; };
 		E537EB889EA6499CB212F03D /* libPods-youparty2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 006F7854321744D5999F918C /* libPods-youparty2.a */; };
 /* End PBXBuildFile section */
 
@@ -124,6 +129,11 @@
 		38619366198D98230032987F /* MGTableBoxStyled.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTableBoxStyled.m; sourceTree = "<group>"; };
 		38619381198D983A0032987F /* YTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTViewController.h; sourceTree = "<group>"; };
 		38619382198D983A0032987F /* YTViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTViewController.m; sourceTree = "<group>"; };
+		38619384198D99E80032987F /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		38619386198D99F80032987F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		38619388198D9A030032987F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		3861938A198D9A0A0032987F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3861938C198D9A120032987F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		CFA25E59E54A4774AA929D9A /* Pods-youparty2.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-youparty2.xcconfig"; path = "Pods/Pods-youparty2.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,6 +142,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3861938D198D9A120032987F /* CoreGraphics.framework in Frameworks */,
+				3861938B198D9A0A0032987F /* Foundation.framework in Frameworks */,
+				38619389198D9A030032987F /* UIKit.framework in Frameworks */,
+				38619387198D99F80032987F /* QuartzCore.framework in Frameworks */,
+				38619385198D99E80032987F /* CoreText.framework in Frameworks */,
 				E537EB889EA6499CB212F03D /* libPods-youparty2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,6 +345,11 @@
 		5189E102138E41089A3EF797 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3861938C198D9A120032987F /* CoreGraphics.framework */,
+				3861938A198D9A0A0032987F /* Foundation.framework */,
+				38619388198D9A030032987F /* UIKit.framework */,
+				38619386198D99F80032987F /* QuartzCore.framework */,
+				38619384198D99E80032987F /* CoreText.framework */,
 				006F7854321744D5999F918C /* libPods-youparty2.a */,
 			);
 			name = Frameworks;
@@ -615,6 +635,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = youparty2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -627,6 +648,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = youparty2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
