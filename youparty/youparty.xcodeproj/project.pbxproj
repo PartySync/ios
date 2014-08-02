@@ -13,6 +13,10 @@
 		0A6F9F40198D75F800CD3651 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A6F9F3E198D75F800CD3651 /* Main.storyboard */; };
 		0A6F9F42198D75F800CD3651 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A6F9F41198D75F800CD3651 /* Images.xcassets */; };
 		0A6F9F4E198D75F800CD3651 /* youpartyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6F9F4D198D75F800CD3651 /* youpartyTests.m */; };
+		38179861198D8E980010B56E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38179860198D8E980010B56E /* UIKit.framework */; };
+		38179863198D8EA60010B56E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38179862198D8EA60010B56E /* CoreGraphics.framework */; };
+		38179865198D8EAD0010B56E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38179864198D8EAD0010B56E /* Foundation.framework */; };
+		38179868198D8F1C0010B56E /* UIControl+MGEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 38179867198D8F1C0010B56E /* UIControl+MGEvents.m */; };
 		3877741C198D7F2E0081108B /* NSAttributedString+MGTrim.m in Sources */ = {isa = PBXBuildFile; fileRef = 387773FB198D7F2E0081108B /* NSAttributedString+MGTrim.m */; };
 		3877741D198D7F2E0081108B /* UIColor+MGExpanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 387773FD198D7F2E0081108B /* UIColor+MGExpanded.m */; };
 		3877741E198D7F2E0081108B /* UIResponder+FirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 387773FF198D7F2E0081108B /* UIResponder+FirstResponder.m */; };
@@ -69,6 +73,11 @@
 		0A6F9F47198D75F800CD3651 /* youpartyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = youpartyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A6F9F4C198D75F800CD3651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A6F9F4D198D75F800CD3651 /* youpartyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = youpartyTests.m; sourceTree = "<group>"; };
+		38179860198D8E980010B56E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		38179862198D8EA60010B56E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		38179864198D8EAD0010B56E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		38179866198D8F1C0010B56E /* UIControl+MGEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+MGEvents.h"; sourceTree = "<group>"; };
+		38179867198D8F1C0010B56E /* UIControl+MGEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+MGEvents.m"; sourceTree = "<group>"; };
 		387773FA198D7F2E0081108B /* NSAttributedString+MGTrim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+MGTrim.h"; sourceTree = "<group>"; };
 		387773FB198D7F2E0081108B /* NSAttributedString+MGTrim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+MGTrim.m"; sourceTree = "<group>"; };
 		387773FC198D7F2E0081108B /* UIColor+MGExpanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+MGExpanded.h"; sourceTree = "<group>"; };
@@ -138,6 +147,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38179865198D8EAD0010B56E /* Foundation.framework in Frameworks */,
+				38179863198D8EA60010B56E /* CoreGraphics.framework in Frameworks */,
+				38179861198D8E980010B56E /* UIKit.framework in Frameworks */,
 				3877742E198D7F540081108B /* QuartzCore.framework in Frameworks */,
 				3877742C198D7F4F0081108B /* CoreText.framework in Frameworks */,
 				DDFCBE10DAAC4AC2B0DC77C2 /* libPods-youparty.a in Frameworks */,
@@ -263,6 +275,8 @@
 		387773F9198D7F2E0081108B /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				38179866198D8F1C0010B56E /* UIControl+MGEvents.h */,
+				38179867198D8F1C0010B56E /* UIControl+MGEvents.m */,
 				387773FA198D7F2E0081108B /* NSAttributedString+MGTrim.h */,
 				387773FB198D7F2E0081108B /* NSAttributedString+MGTrim.m */,
 				387773FC198D7F2E0081108B /* UIColor+MGExpanded.h */,
@@ -340,6 +354,9 @@
 		44A234DD264A42708109EFEB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				38179864198D8EAD0010B56E /* Foundation.framework */,
+				38179862198D8EA60010B56E /* CoreGraphics.framework */,
+				38179860198D8E980010B56E /* UIKit.framework */,
 				3877742D198D7F540081108B /* QuartzCore.framework */,
 				3877742B198D7F4F0081108B /* CoreText.framework */,
 				080E3E7476D54641A162AAE6 /* libPods-youparty.a */,
@@ -495,6 +512,7 @@
 				3877741E198D7F2E0081108B /* UIResponder+FirstResponder.m in Sources */,
 				3877744C198D7F990081108B /* JSONModel.m in Sources */,
 				3877742A198D7F2E0081108B /* NSString+MGEasySize.m in Sources */,
+				38179868198D8F1C0010B56E /* UIControl+MGEvents.m in Sources */,
 				3877741C198D7F2E0081108B /* NSAttributedString+MGTrim.m in Sources */,
 				38777458198D82890081108B /* YTViewController.m in Sources */,
 				38777455198D7F990081108B /* JSONValueTransformer.m in Sources */,
