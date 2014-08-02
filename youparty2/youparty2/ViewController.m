@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "PlaylistViewController.h"
 
 @interface ViewController ()
 
@@ -18,6 +19,9 @@
     Firebase* fb;
 }
 
+@synthesize usernameLabel;
+@synthesize loginLabel;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -25,32 +29,51 @@
     // Create a reference to a Firebase location
     fb = [[Firebase alloc] initWithUrl:@"https://youparty.firebaseio.com/"];
     // Write data to Firebase
-    [fb setValue:@"Do you have data? You'll love Firebase."];
+    usernameLabel.delegate = self;
+    loginLabel.delegate = self;
     
-    [self setUpNewUser:@"Kevin"];
+
+}
+
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == usernameLabel) {
+        [textField resignFirstResponder];
+        
+        //Firebase* users = [fb childByAppendingPath:@"users"];
+        
+        [self setUpNewUser:textField.text];
+        
+        [self addPlaylistToUser:textField.text playlist:@"YCHacks"];
+        
+        [self addPlaylistToUser:textField.text playlist:@"music"];
+        
+        [[NSUserDefaults standardUserDefaults] setValue:textField.text forKey:@"username"];
+        
+        PlaylistViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"Playlist"];
+        
+        [self presentViewController:vc animated:YES completion:nil];
+        
+        return NO;
+    }
     
-    [self setUpNewUser:@"Gautam"];
-    
-    [self setUpNewUser:@"Shalin"];
-    
-    [self setUpNewPlaylist:@"YCHacks"];
-    
-    [self setUpNewPlaylist:@"ios dev music"];
-    
-    [self addSongToPlaylist:@"YCHacks" url:@"yt.com/trololol" videoname:@"troll"];
-    
-    [self addSongToPlaylist:@"YCHacks" url:@"yc.com/hacks" videoname:@"y?"];
-    
-    [self addSongToPlaylist:@"ios dev music" url:@"yt.com/yc" videoname:@"HackYC"];
-    
-    [self addPlaylistToUser:@"Kevin" playlist:@"YCHacks"];
-    [self addPlaylistToUser:@"Kevin" playlist:@"ios dev music"];
-    
-    [self addPlaylistToUser:@"Shalin" playlist:@"YCHacks"];
-    [self addPlaylistToUser:@"Shalin" playlist:@"ios dev music"];
-    
-    [self addPlaylistToUser:@"Gautam" playlist:@"YCHacks"];
-    
+    if (textField == loginLabel) {
+        [textField resignFirstResponder];
+        
+        //Firebase* users = [fb childByAppendingPath:@"users"];
+        
+        //[self setUpNewUser:textField.text];
+        
+        [[NSUserDefaults standardUserDefaults] setValue:textField.text forKey:@"username"];
+        
+        PlaylistViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"Playlist"];
+        
+        [self presentViewController:vc animated:YES completion:nil];
+        
+        return NO;
+    }
+    return YES;
 }
 
 -(void) addPlaylistToUser:(NSString*) user playlist:(NSString*)playlist
@@ -64,18 +87,11 @@
 -(void) setUpNewUser:(NSString*) username
 {
     Firebase* users = [fb childByAppendingPath:@"users"];
-    
-    [users setValue:@"k"];
-    
     NSString* name = username;
-    
     Firebase* myself = [users childByAppendingPath:name];
-    
     [[myself childByAppendingPath:@"name"] setValue:name];
-    
     Firebase* playists = [myself childByAppendingPath:@"playlists"];
-    
-    [playists setValue:@"insert playlist here"];
+    [playists setValue:@"none"];
 }
 
 

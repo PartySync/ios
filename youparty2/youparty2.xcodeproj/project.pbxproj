@@ -13,6 +13,7 @@
 		0A2D9EC6198D902C0066DA1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A2D9EC4198D902C0066DA1B /* Main.storyboard */; };
 		0A2D9EC8198D902C0066DA1B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A2D9EC7198D902C0066DA1B /* Images.xcassets */; };
 		0A2D9ED4198D902C0066DA1B /* youparty2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D9ED3198D902C0066DA1B /* youparty2Tests.m */; };
+		0AC55E7E198D9B9800AC4AD6 /* PlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC55E7D198D9B9800AC4AD6 /* PlaylistViewController.m */; };
 		E537EB889EA6499CB212F03D /* libPods-youparty2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 006F7854321744D5999F918C /* libPods-youparty2.a */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,8 @@
 		0A2D9ECD198D902C0066DA1B /* youparty2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = youparty2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A2D9ED2198D902C0066DA1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A2D9ED3198D902C0066DA1B /* youparty2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = youparty2Tests.m; sourceTree = "<group>"; };
+		0AC55E7C198D9B9800AC4AD6 /* PlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistViewController.h; sourceTree = "<group>"; };
+		0AC55E7D198D9B9800AC4AD6 /* PlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistViewController.m; sourceTree = "<group>"; };
 		CFA25E59E54A4774AA929D9A /* Pods-youparty2.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-youparty2.xcconfig"; path = "Pods/Pods-youparty2.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +93,8 @@
 				0A2D9EC1198D902C0066DA1B /* ViewController.h */,
 				0A2D9EC2198D902C0066DA1B /* ViewController.m */,
 				0A2D9EC4198D902C0066DA1B /* Main.storyboard */,
+				0AC55E7C198D9B9800AC4AD6 /* PlaylistViewController.h */,
+				0AC55E7D198D9B9800AC4AD6 /* PlaylistViewController.m */,
 				0A2D9EC7198D902C0066DA1B /* Images.xcassets */,
 				0A2D9EBA198D902C0066DA1B /* Supporting Files */,
 			);
@@ -264,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AC55E7E198D9B9800AC4AD6 /* PlaylistViewController.m in Sources */,
 				0A2D9EC3198D902C0066DA1B /* ViewController.m in Sources */,
 				0A2D9EC0198D902C0066DA1B /* AppDelegate.m in Sources */,
 				0A2D9EBD198D902C0066DA1B /* main.m in Sources */,
