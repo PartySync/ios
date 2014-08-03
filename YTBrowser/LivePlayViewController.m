@@ -13,7 +13,7 @@
 
 @end
 
-static NSString *youTubeVideoHTML = @"<!DOCTYPE html><html><head><style>body{margin:0px 0px 0px 0px;}</style></head> <body> <div id=\"player\"></div> <script> var tag = document.createElement('script'); tag.src = \"http://www.youtube.com/player_api\"; var firstScriptTag = document.getElementsByTagName('script')[0]; firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); var vids = ['9jyYssjH06c', 'uxsWjeiQ76s', 'IN7o2Iy89WQ']; var player; function onYouTubePlayerAPIReady() { player = new YT.Player('player', { width:'%0.0f', height:'%0.0f', events: { 'onReady': function (event) {event.target.playVideo();player.loadVideoById(vids[0], 0,'large');  }, 'onStateChange': function (event) { if (event.data == 0) { vids.shift(); alert(vids); player.loadVideoById(vids[0], 0, 'large'); } } } }); } function onPlayerReady(event) { event.target.playVideo(); }</script> </body> </html>";
+static NSString *youTubeVideoHTML = @"<!DOCTYPE html><html><head><style>body{margin:0px 0px 0px 0px;}</style></head> <body> <div id=\"player\"></div> <script> var tag = document.createElement('script'); tag.src = \"http://www.youtube.com/player_api\"; var firstScriptTag = document.getElementsByTagName('script')[0]; firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); var vids = ['9jyYssjH06c', 'uxsWjeiQ76s', 'IN7o2Iy89WQ']; var player; function onYouTubePlayerAPIReady() { player = new YT.Player('player', { width:'%0.0f', height:'%0.0f', events: { 'onReady': function (event) {event.target.playVideo();player.loadVideoById(vids[%d], 0,'large');  }, 'onStateChange': function (event) { if (event.data == 0) { vids.shift(); alert(vids); player.loadVideoById(vids[0], 0, 'large'); } } } }); } function onPlayerReady(event) { event.target.playVideo(); }</script> </body> </html>";
 
 
 
@@ -192,7 +192,7 @@ static NSString *youTubeVideoHTML = @"<!DOCTYPE html><html><head><style>body{mar
 //    NSLog(@"YOOOO: %@", jsFunc);
     
     
-    NSString *html = [NSString stringWithFormat:youTubeVideoHTML, jsFunc, webPlayer.frame.size.width, webPlayer.frame.size.height];
+    NSString *html = [NSString stringWithFormat:youTubeVideoHTML, jsFunc,2,webPlayer.frame.size.width, webPlayer.frame.size.height];
     
     [webPlayer loadHTMLString:html baseURL:[[NSBundle mainBundle] resourceURL]];
 }
