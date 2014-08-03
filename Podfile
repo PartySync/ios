@@ -3,6 +3,7 @@
 
 target "YTBrowser" do
 
+pod 'Firebase', '>= 1.1.10'
 
 end
 
