@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A04243A198DB9FF00D861AD /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A042439198DB9FF00D861AD /* VideoViewController.m */; };
+		0A04243C198DD40A00D861AD /* thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A04243B198DD40A00D861AD /* thumbnail.png */; };
 		0A2D9EBD198D902C0066DA1B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D9EBC198D902C0066DA1B /* main.m */; };
 		0A2D9EC0198D902C0066DA1B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D9EBF198D902C0066DA1B /* AppDelegate.m */; };
 		0A2D9EC3198D902C0066DA1B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D9EC2198D902C0066DA1B /* ViewController.m */; };
@@ -29,6 +31,9 @@
 
 /* Begin PBXFileReference section */
 		006F7854321744D5999F918C /* libPods-youparty2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-youparty2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A042438198DB9FF00D861AD /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
+		0A042439198DB9FF00D861AD /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
+		0A04243B198DD40A00D861AD /* thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbnail.png; sourceTree = "<group>"; };
 		0A2D9EB7198D902C0066DA1B /* youparty2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = youparty2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A2D9EBB198D902C0066DA1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A2D9EBC198D902C0066DA1B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -93,6 +98,8 @@
 				0A2D9EC1198D902C0066DA1B /* ViewController.h */,
 				0A2D9EC2198D902C0066DA1B /* ViewController.m */,
 				0A2D9EC4198D902C0066DA1B /* Main.storyboard */,
+				0A042438198DB9FF00D861AD /* VideoViewController.h */,
+				0A042439198DB9FF00D861AD /* VideoViewController.m */,
 				0AC55E7C198D9B9800AC4AD6 /* PlaylistViewController.h */,
 				0AC55E7D198D9B9800AC4AD6 /* PlaylistViewController.m */,
 				0A2D9EC7198D902C0066DA1B /* Images.xcassets */,
@@ -104,6 +111,7 @@
 		0A2D9EBA198D902C0066DA1B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0A04243B198DD40A00D861AD /* thumbnail.png */,
 				0A2D9EBB198D902C0066DA1B /* Info.plist */,
 				0A2D9EBC198D902C0066DA1B /* main.m */,
 			);
@@ -217,6 +225,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A04243C198DD40A00D861AD /* thumbnail.png in Resources */,
 				0A2D9EC6198D902C0066DA1B /* Main.storyboard in Resources */,
 				0A2D9EC8198D902C0066DA1B /* Images.xcassets in Resources */,
 			);
@@ -269,6 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A04243A198DB9FF00D861AD /* VideoViewController.m in Sources */,
 				0AC55E7E198D9B9800AC4AD6 /* PlaylistViewController.m in Sources */,
 				0A2D9EC3198D902C0066DA1B /* ViewController.m in Sources */,
 				0A2D9EC0198D902C0066DA1B /* AppDelegate.m in Sources */,

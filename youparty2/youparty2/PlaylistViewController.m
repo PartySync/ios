@@ -7,6 +7,7 @@
 //
 
 #import "PlaylistViewController.h"
+#import "VideoViewController.h"
 
 @interface PlaylistViewController ()
 
@@ -82,6 +83,17 @@
     return [playlists count];
 }
 
+- (void)tableView: (UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath
+{
+    NSString* playlistname = [playlists objectAtIndex:indexPath.row];
+    NSLog(playlistname);
+    [[NSUserDefaults standardUserDefaults] setObject:playlistname forKey:@"playlistname"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    VideoViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"Videos"];
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
 - (UITableViewCell*)tableView:(UITableView*)table cellForRowAtIndexPath:(NSIndexPath *)index
 {
     //NSLog(@"okokok");
@@ -93,7 +105,7 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    NSDictionary* chatMessage = [playlists objectAtIndex:index.row];
+    NSString* chatMessage = [playlists objectAtIndex:index.row];
     
     cell.textLabel.text = chatMessage;
     

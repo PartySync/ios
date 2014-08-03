@@ -52,7 +52,6 @@
         [[NSUserDefaults standardUserDefaults] setValue:textField.text forKey:@"username"];
         
         PlaylistViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"Playlist"];
-        
         [self presentViewController:vc animated:YES completion:nil];
         
         return NO;

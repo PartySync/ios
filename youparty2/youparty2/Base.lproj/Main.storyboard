@@ -122,5 +122,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="54q-Ha-11z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--Video View Controller-->
+        <scene sceneID="fRr-8e-zc0">
+            <objects>
+                <viewController storyboardIdentifier="Videos" id="RlK-ZD-Lgr" customClass="VideoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DWe-KI-adL"/>
+                        <viewControllerLayoutGuide type="bottom" id="e5S-qh-Br2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jf0-1r-yIN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dxv-x1-PWL">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="RlK-ZD-Lgr" id="zGR-CF-M1J"/>
+                                    <outlet property="delegate" destination="RlK-ZD-Lgr" id="fTb-ZU-Uae"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="tableView" destination="dxv-x1-PWL" id="o9d-Kj-iqX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i6j-Km-dU2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1558" y="128"/>
+        </scene>
     </scenes>
 </document>
