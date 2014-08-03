@@ -19,7 +19,7 @@
     NSMutableArray* playlists;
 }
 
-@synthesize tableView;
+@synthesize tableView,addNewPlaylist,backButton,playlistLabel;
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -60,9 +60,35 @@
         //[self.tableView setContentOffset:CGPointMake(0, CGFLOAT_MAX)];
     }];
     
+    [addNewPlaylist addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
+    [backButton addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
+
     
     
     
+}
+
+-(void) goBack
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+-(void) buttonAction
+{
+    if(![playlistLabel.text isEqualToString:@""])
+    {
+        Firebase* playlistsf = [fb childByAppendingPath:@"playlists"];
+        NSString* playlistname = playlistLabel.text;
+        Firebase* theplaylist = [playlistsf childByAppendingPath:playlistname];
+        [[theplaylist childByAppendingPath:@"name"] setValue:playlistname];
+        Firebase* videos = [theplaylist childByAppendingPath:@"videos"];
+        //[videos setValue:@"insert videos part of playlist here"];
+        
+        Firebase* users = [fb childByAppendingPath:@"users"];
+        Firebase* myself = [users childByAppendingPath:[[NSUserDefaults standardUserDefaults] stringForKey:@"username"]];
+        Firebase* playists = [myself childByAppendingPath:@"playlists"];
+        [[playists childByAutoId] setValue:playlistname];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -108,6 +134,10 @@
     NSString* chatMessage = [playlists objectAtIndex:index.row];
     
     cell.textLabel.text = chatMessage;
+    
+    cell.backgroundColor = [UIColor clearColor];
+    
+    cell.textColor = [UIColor whiteColor];
     
     return cell;
 }

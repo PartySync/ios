@@ -13,4 +13,9 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
+@property (strong, nonatomic) IBOutlet UIButton *addNewPlaylist;
+
+@property (strong, nonatomic) IBOutlet UIButton *backButton;
+
+@property (strong, nonatomic) IBOutlet UITextField *playlistLabel;
 @end

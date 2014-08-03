@@ -50,7 +50,7 @@
     //setup the scroll view
     scroller.contentLayoutMode = MGLayoutGridStyle;
     scroller.bottomPadding = 8;
-    scroller.backgroundColor = [UIColor colorWithWhite:0.25 alpha:1];
+    scroller.backgroundColor = [UIColor clearColor];
 
     //setup the search box
     searchBox = [MGBox boxWithSize:CGSizeMake(320,44)];

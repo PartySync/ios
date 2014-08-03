@@ -33,6 +33,8 @@
     usernameLabel.delegate = self;
     loginLabel.delegate = self;
     
+    //[self setUpNewPlaylist:@"YCHacks"];
+    
     //[self addSongToPlaylist:@"YCHacks" url:@"X2F4EFYM_MA" videoname:@"nomnom"];
 }
 
@@ -55,6 +57,8 @@
         PlaylistViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"PlaylistView"];
         [self presentViewController:vc animated:YES completion:nil];
         
+        textField.text = @"";
+        
         return NO;
     }
     
@@ -70,6 +74,8 @@
         PlaylistViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"PlaylistView"];
         
         [self presentViewController:vc animated:YES completion:nil];
+        
+        textField.text = @"";
         
         return NO;
     }

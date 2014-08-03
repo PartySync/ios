@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A7106F7198E28B800298904 /* LivePlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7106F6198E28B800298904 /* LivePlayViewController.m */; };
+		0A7106F9198E400000298904 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A7106F8198E400000298904 /* background.png */; };
 		37B10636971E45C6B868427E /* libPods-YTBrowser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A3290F70954718AF2E16FF /* libPods-YTBrowser.a */; };
 		3890A06E198D9F5900EC2597 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3890A022198D9F5900EC2597 /* JSONModel.m */; };
 		3890A06F198D9F5900EC2597 /* JSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 3890A024198D9F5900EC2597 /* JSONModelArray.m */; };
@@ -59,6 +61,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A7106F5198E28B800298904 /* LivePlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePlayViewController.h; sourceTree = "<group>"; };
+		0A7106F6198E28B800298904 /* LivePlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePlayViewController.m; sourceTree = "<group>"; };
+		0A7106F8198E400000298904 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		15A3290F70954718AF2E16FF /* libPods-YTBrowser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YTBrowser.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3890A021198D9F5900EC2597 /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; };
 		3890A022198D9F5900EC2597 /* JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModel.m; sourceTree = "<group>"; };
@@ -299,23 +304,26 @@
 		3890A091198DA1AD00EC2597 /* YTBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				0A7106F8198E400000298904 /* background.png */,
 				3890A092198DA1AD00EC2597 /* AppDelegate.h */,
 				3890A093198DA1AD00EC2597 /* AppDelegate.m */,
+				3890A0B4198DDF3100EC2597 /* LoginViewController.h */,
+				3890A0B5198DDF3100EC2597 /* LoginViewController.m */,
 				3890A0B7198DDF4000EC2597 /* PlaylistViewController.h */,
 				3890A0B8198DDF4000EC2597 /* PlaylistViewController.m */,
 				3890A0BA198DDF4A00EC2597 /* VideoViewController.h */,
 				3890A0BB198DDF4A00EC2597 /* VideoViewController.m */,
-				3890A094198DA1AD00EC2597 /* InfoPlist.strings */,
-				3890A096198DA1AD00EC2597 /* MainStoryboard.storyboard */,
-				3890A0B4198DDF3100EC2597 /* LoginViewController.h */,
-				3890A0B5198DDF3100EC2597 /* LoginViewController.m */,
-				3890A099198DA1AD00EC2597 /* main.m */,
-				3890A09A198DA1AD00EC2597 /* PhotoBox.h */,
-				3890A09B198DA1AD00EC2597 /* PhotoBox.m */,
 				3890A09C198DA1AD00EC2597 /* ViewController.h */,
 				3890A09D198DA1AD00EC2597 /* ViewController.m */,
 				3890A09E198DA1AD00EC2597 /* WebVideoViewController.h */,
 				3890A09F198DA1AD00EC2597 /* WebVideoViewController.m */,
+				0A7106F5198E28B800298904 /* LivePlayViewController.h */,
+				0A7106F6198E28B800298904 /* LivePlayViewController.m */,
+				3890A096198DA1AD00EC2597 /* MainStoryboard.storyboard */,
+				3890A094198DA1AD00EC2597 /* InfoPlist.strings */,
+				3890A099198DA1AD00EC2597 /* main.m */,
+				3890A09A198DA1AD00EC2597 /* PhotoBox.h */,
+				3890A09B198DA1AD00EC2597 /* PhotoBox.m */,
 				3890A0A0198DA1AD00EC2597 /* YTBrowser-Info.plist */,
 				3890A0A1198DA1AD00EC2597 /* YTBrowser-Prefix.pch */,
 				3890A0B2198DDCAF00EC2597 /* Images.xcassets */,
@@ -439,6 +447,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3890A0B3198DDCAF00EC2597 /* Images.xcassets in Resources */,
+				0A7106F9198E400000298904 /* background.png in Resources */,
 				3890A0A4198DA1AD00EC2597 /* MainStoryboard.storyboard in Resources */,
 				3890A0A3198DA1AD00EC2597 /* InfoPlist.strings in Resources */,
 				3890A0B0198DCFEA00EC2597 /* YTPlayerView-iframe-player.html in Resources */,
@@ -509,6 +518,7 @@
 				3890A06E198D9F5900EC2597 /* JSONModel.m in Sources */,
 				3890A0BC198DDF4A00EC2597 /* VideoViewController.m in Sources */,
 				3890A078198D9F5900EC2597 /* NSAttributedString+MGTrim.m in Sources */,
+				0A7106F7198E28B800298904 /* LivePlayViewController.m in Sources */,
 				3890A076198D9F5900EC2597 /* JSONKeyMapper.m in Sources */,
 				3890A075198D9F5900EC2597 /* JSONModel+networking.m in Sources */,
 				3890A072198D9F5900EC2597 /* NSArray+JSONModel.m in Sources */,
