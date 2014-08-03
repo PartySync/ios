@@ -47,7 +47,7 @@
     //NSLog(@"%@", videolist.description);
     
     [backButton addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
-
+    
     
     
     [videolist observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
@@ -56,9 +56,19 @@
         // Reload the table view so the new message will show up.
         
         [self.tableView reloadData];
-//        [self updatePlaylist];
+        //        [self updatePlaylist];
         
         
+    }];
+    
+    Firebase* firebaseRef = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://youparty.firebaseio.com/playlists/%@/",badvariablenames]];
+    
+    [firebaseRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"%f",[snapshot.value[@"currentVidTime"] floatValue]);
+        NSLog(@"%f",[snapshot.value[@"currentVid"] floatValue]);
+        
+        currentTime = [snapshot.value[@"currentVidTime"] floatValue];
+        currentVid = snapshot.value[@"currentVid"];
     }];
     
     player.delegate = self;
@@ -77,7 +87,7 @@
         [self updatePlaylist];
     });
     
-    dispatch_time_t countdownTime2 = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC));
+    dispatch_time_t countdownTime2 = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC));
     dispatch_after(countdownTime2, dispatch_get_main_queue(), ^(void){
         [player playVideo];
     });
@@ -155,7 +165,7 @@
     
     title.text = titlestring;//chatMessage[@"name"];
     [title sizeToFit];
-
+    
     
     detail.text = [NSString stringWithFormat:@"youtube.com/%@",chatMessage[@"url"]];
     [detail sizeToFit];
@@ -166,7 +176,6 @@
     
     //NSLog(url);
     
-    //NSString *imageUrl = @"http://www.foo.com/myImage.jpg";
     [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         thumbnail.image = [UIImage imageWithData:data];
     }];
@@ -176,12 +185,13 @@
 -(void) updatePlaylist {
     
     //[player playVideo];
-    [player loadWithVideoId:[NSString stringWithFormat:@"%@", videoURLs[videoNumber]]];
+    [player loadWithVideoId:currentVid];
+    //    [player loadVideoById:[NSString stringWithFormat:@"%f", currentVid] startSeconds:0 suggestedQuality:@"strong"];
 }
 
 -(void) playVideoDelay
 {
-    dispatch_time_t countdownTime2 = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC));
+    dispatch_time_t countdownTime2 = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC));
     dispatch_after(countdownTime2, dispatch_get_main_queue(), ^(void){
         [player playVideo];
     });
@@ -189,7 +199,7 @@
 
 - (void)playerView:(YTPlayerView *)playerView didChangeToState:(YTPlayerState)state {
     switch (state) {
-//        case k
+            //        case k
         case kYTPlayerStatePlaying:
             NSLog(@"Started playback");
             break;

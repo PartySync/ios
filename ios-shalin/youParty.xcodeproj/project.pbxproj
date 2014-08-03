@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A7106F7198E28B800298904 /* LivePlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7106F6198E28B800298904 /* LivePlayViewController.m */; };
+		0AACE87F198E855E009D2365 /* plus-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AACE87E198E855E009D2365 /* plus-512.png */; };
 		37B10636971E45C6B868427E /* libPods-YTBrowser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A3290F70954718AF2E16FF /* libPods-YTBrowser.a */; };
 		3817FA28198E66D600574182 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 3817FA27198E66D600574182 /* background.png */; };
 		3817FA2A198E678400574182 /* line.png in Resources */ = {isa = PBXBuildFile; fileRef = 3817FA29198E678400574182 /* line.png */; };
@@ -64,6 +65,7 @@
 /* Begin PBXFileReference section */
 		0A7106F5198E28B800298904 /* LivePlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePlayViewController.h; sourceTree = "<group>"; };
 		0A7106F6198E28B800298904 /* LivePlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePlayViewController.m; sourceTree = "<group>"; };
+		0AACE87E198E855E009D2365 /* plus-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-512.png"; sourceTree = "<group>"; };
 		15A3290F70954718AF2E16FF /* libPods-YTBrowser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YTBrowser.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3817FA27198E66D600574182 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = SOURCE_ROOT; };
 		3817FA29198E678400574182 /* line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line.png; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 		3890A091198DA1AD00EC2597 /* YTBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				0AACE87E198E855E009D2365 /* plus-512.png */,
 				3817FA27198E66D600574182 /* background.png */,
 				3817FA29198E678400574182 /* line.png */,
 				3890A092198DA1AD00EC2597 /* AppDelegate.h */,
@@ -450,6 +453,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3890A0B3198DDCAF00EC2597 /* Images.xcassets in Resources */,
+				0AACE87F198E855E009D2365 /* plus-512.png in Resources */,
 				3817FA28198E66D600574182 /* background.png in Resources */,
 				3890A0A4198DA1AD00EC2597 /* MainStoryboard.storyboard in Resources */,
 				3890A0A3198DA1AD00EC2597 /* InfoPlist.strings in Resources */,

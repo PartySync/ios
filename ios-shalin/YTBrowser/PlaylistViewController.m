@@ -47,6 +47,14 @@
     
     NSLog([user description]);
     
+    playlistLabel.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"add a playlist" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    
+    playlistLabel.layer.borderColor = [[UIColor whiteColor] CGColor];
+    playlistLabel.layer.borderWidth= 1.0f;
+    playlistLabel.layer.cornerRadius=8.0f;
+    
+    playlistLabel.delegate = self;
+    
     [user observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         // Add the chat message to the array.
         [playlists addObject:snapshot.value];
@@ -89,6 +97,20 @@
         Firebase* playists = [myself childByAppendingPath:@"playlists"];
         [[playists childByAutoId] setValue:playlistname];
     }
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.25];
+    self.view.frame = CGRectMake(0,0,320,400);
+    [UIView commitAnimations];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == playlistLabel) {
+        [textField resignFirstResponder];
+        [self buttonAction];
+        return NO;
+    }
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -116,8 +138,19 @@
     [[NSUserDefaults standardUserDefaults] setObject:playlistname forKey:@"playlistname"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     VideoViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"VideosView"];
     [self presentViewController:vc animated:YES completion:nil];
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.25];
+    self.view.frame = CGRectMake(0,-160,320,400);
+    [UIView commitAnimations];
+    
 }
 
 - (UITableViewCell*)tableView:(UITableView*)table cellForRowAtIndexPath:(NSIndexPath *)index

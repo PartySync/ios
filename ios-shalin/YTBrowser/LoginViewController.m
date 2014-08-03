@@ -57,11 +57,24 @@
     //[self addSongToPlaylist:@"YCHacks" url:@"X2F4EFYM_MA" videoname:@"nomnom"];
 }
 
-
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.25];
+    self.view.frame = CGRectMake(0,-160,320,400);
+    [UIView commitAnimations];
+    
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == usernameLabel) {
         [textField resignFirstResponder];
+        
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.25];
+        self.view.frame = CGRectMake(0,0,320,400);
+        [UIView commitAnimations];
+        
         
         //Firebase* users = [fb childByAppendingPath:@"users"];
         
@@ -83,6 +96,11 @@
     
     if (textField == loginLabel) {
         [textField resignFirstResponder];
+        
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.25];
+        self.view.frame = CGRectMake(0,0,320,400);
+        [UIView commitAnimations];
         
         //Firebase* users = [fb childByAppendingPath:@"users"];
         

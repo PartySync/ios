@@ -81,7 +81,7 @@
     
     [theplaylistloc observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         
-        NSLog(@"%@",snapshot.value[@"name"]);
+        //NSLog(@"%@",snapshot.value[@"name"]);
         
             playlistName.text = snapshot.value[@"name"];
         
