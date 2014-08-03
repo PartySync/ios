@@ -107,8 +107,11 @@
 
 -(void) moveToLiveView
 {
-    LivePlayViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"LivePlayView"];
-    [self presentViewController:vc animated:YES completion:nil];
+    if([videos count] >= 1)
+    {
+        LivePlayViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"LivePlayView"];
+        [self presentViewController:vc animated:YES completion:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning

@@ -21,18 +21,6 @@
 
 @synthesize tableView,addNewPlaylist,backButton,playlistLabel;
 
-// fixes orientation issues that the user may have
--(BOOL)shouldAutorotate {
-    return NO;
-}
--(NSUInteger)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskAll;
-}
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
-}
-
-
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -57,7 +45,7 @@
     
     Firebase* user = [[[fb childByAppendingPath:@"users"] childByAppendingPath:[[NSUserDefaults standardUserDefaults] stringForKey:@"username"]] childByAppendingPath:@"playlists"];
     
-    NSLog(@"%@", [user description]);
+    NSLog([user description]);
     
     playlistLabel.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"add a playlist" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     
@@ -82,9 +70,18 @@
     
     [addNewPlaylist addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
     [backButton addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    
+    
+}
 
-    
-    
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.25];
+    self.view.frame = CGRectMake(0,-220,320,400);
+    [UIView commitAnimations];
     
 }
 
@@ -125,16 +122,22 @@
     
     playlistLabel.text = @"";
     
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.25];
-    self.view.frame = CGRectMake(0,0,320,400);
-    [UIView commitAnimations];
+    //    [UIView beginAnimations:nil context:NULL];
+    //    [UIView setAnimationDuration:0.25];
+    //    self.view.frame = CGRectMake(0,160,320,400);
+    //    [UIView commitAnimations];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == playlistLabel) {
         [textField resignFirstResponder];
         [self buttonAction];
+        
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.25];
+        self.view.frame = CGRectMake(0,0,320,400);
+        [UIView commitAnimations];
+        
         return NO;
     }
     return YES;
@@ -171,14 +174,7 @@
     [self presentViewController:vc animated:YES completion:nil];
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.25];
-    self.view.frame = CGRectMake(0,-220,320,400);
-    [UIView commitAnimations];
-    
-}
+
 
 - (UITableViewCell*)tableView:(UITableView*)table cellForRowAtIndexPath:(NSIndexPath *)index
 {
