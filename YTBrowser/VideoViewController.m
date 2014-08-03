@@ -111,6 +111,13 @@
     {
         LivePlayViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"LivePlayView"];
         [self presentViewController:vc animated:YES completion:nil];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"This playlist is empty"
+                                                        message:[NSString stringWithFormat:@"Add a video to the playlist and then click play."]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
     }
 }
 
