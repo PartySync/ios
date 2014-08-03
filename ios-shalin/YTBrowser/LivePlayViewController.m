@@ -67,7 +67,7 @@
         [self updatePlaylist];
     });
     
-    dispatch_time_t countdownTime2 = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC));
+    dispatch_time_t countdownTime2 = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC));
     dispatch_after(countdownTime2, dispatch_get_main_queue(), ^(void){
         [player playVideo];
     });
@@ -151,9 +151,14 @@
     
     //[player playVideo];
     [player loadWithVideoId:[NSString stringWithFormat:@"%@", videoURLs[videoNumber]]];
-    
-    
+}
 
+-(void) playVideoDelay
+{
+    dispatch_time_t countdownTime2 = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC));
+    dispatch_after(countdownTime2, dispatch_get_main_queue(), ^(void){
+        [player playVideo];
+    });
 }
 
 - (void)playerView:(YTPlayerView *)playerView didChangeToState:(YTPlayerState)state {
@@ -168,6 +173,7 @@
         case kYTPlayerStateEnded:
             videoNumber += 1;
             [self updatePlaylist];
+            [self playVideoDelay];
             break;
         default:
             break;
