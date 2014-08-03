@@ -97,38 +97,59 @@
 
 - (UITableViewCell*)tableView:(UITableView*)table cellForRowAtIndexPath:(NSIndexPath *)index
 {
+    //NSLog(@"okokok");
+    
     static NSString *CellIdentifier = @"Cell";
     
-    UILabel* title = [[UILabel alloc] initWithFrame:CGRectMake(95, 10, 230, 60)];
-    title.backgroundColor = [UIColor clearColor];
-    title.numberOfLines = 0;
-    title.lineBreakMode = UILineBreakModeWordWrap;
-    title.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:20];
     
-    UILabel* detail = [[UILabel alloc] initWithFrame:CGRectMake(97, 40, 230, 60)];
-    detail.backgroundColor = [UIColor clearColor];
-    detail.numberOfLines = 0;
-    detail.lineBreakMode = UILineBreakModeWordWrap;
-    detail.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:10];
-    
-    UIImageView* thumbnail = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 75, 60)];
-    
+    UILabel* title;
+    UILabel* detail;
+    UIImageView* thumbnail;
     
     UITableViewCell *cell = [table dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        
+        title = [[UILabel alloc] initWithFrame:CGRectMake(95, 10, 230, 60)];
+        title.backgroundColor = [UIColor clearColor];
+        title.numberOfLines = 1;
+        title.textColor = [UIColor whiteColor];
+        //title.lineBreakMode = UILineBreakModeWordWrap;
+        title.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:20];
+        
+        detail = [[UILabel alloc] initWithFrame:CGRectMake(97, 40, 230, 60)];
+        detail.backgroundColor = [UIColor clearColor];
+        detail.textColor = [UIColor whiteColor];
+        detail.numberOfLines = 0;
+        detail.lineBreakMode = UILineBreakModeWordWrap;
+        detail.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:10];
+        
+        thumbnail = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 75, 60)];
     }
     
     [cell addSubview:title];
     [cell addSubview:detail];
     [cell addSubview:thumbnail];
     
+    cell.backgroundColor = [UIColor clearColor];
+    cell.textColor = [UIColor whiteColor];
+    
     NSDictionary* chatMessage = [videos objectAtIndex:index.row];
     
-    [videoURLs addObject:chatMessage[@"url"]];
+    NSData *data=[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://gdata.youtube.com/feeds/api/videos/%@?v=2&alt=jsonc",chatMessage[@"url"]]]];
+    NSError *error=nil;
+    NSDictionary *response=[NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error:&error];
+    //NSString* sth=[response objectForKey: @"some_your_key"];
     
-    title.text = chatMessage[@"name"];
+    NSString* titlestring = [[response objectForKey:@"data"] objectForKey:@"title"];
+    
+    if(titlestring.length > 20)
+    {
+        titlestring = [NSString stringWithFormat:@"%@...",[titlestring substringToIndex:18]];
+    }
+    
+    title.text = titlestring;//chatMessage[@"name"];
     [title sizeToFit];
     
     detail.text = [NSString stringWithFormat:@"youtube.com/%@",chatMessage[@"url"]];
@@ -145,11 +166,22 @@
         thumbnail.image = [UIImage imageWithData:data];
     }];
     
+    //cell.textLabel.text = chatMessage[@"name"];
+    //cell.detailTextLabel.text = chatMessage[@"url"];
+    
+    //
+    
+    
     return cell;
 }
 -(void) updatePlaylist {
     
     //[player playVideo];
+//    NSDictionary *playerVars = @{
+//                                 @"playsinline" : @1,
+//                                 @"autoplay" : @1,
+//                                 };
+    
     [player loadWithVideoId:[NSString stringWithFormat:@"%@", videoURLs[videoNumber]]];
 }
 
