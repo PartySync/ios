@@ -17,6 +17,7 @@
 @implementation LoginViewController
 {
     Firebase *fb;
+    //hi
 }
 
 @synthesize usernameLabel;
@@ -31,6 +32,8 @@
     // Write data to Firebase
     usernameLabel.delegate = self;
     loginLabel.delegate = self;
+    
+    [self addSongToPlaylist:@"YCHacks" url:@"SMWi7CLoZ2Q" videoname:@"nomnom"];
 }
 
 
@@ -109,8 +112,9 @@
     Firebase* theplaylist = [playlists childByAppendingPath:playlist];
     Firebase* videos = [theplaylist childByAppendingPath:@"videos"];
     Firebase* video = [videos childByAutoId];
-    [[video childByAppendingPath:@"name"] setValue:videoname];
-    [[video childByAppendingPath:@"url"] setValue:url];
+    [video setValue:@{@"name": videoname,@"url": url}];
+//    [[video childByAppendingPath:@"name"] setValue:videoname];
+//    [[video childByAppendingPath:@"url"] setValue:url];
 }
 
 - (void)didReceiveMemoryWarning {

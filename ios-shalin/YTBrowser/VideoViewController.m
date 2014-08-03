@@ -50,13 +50,13 @@
     
     NSString* badvariablenames = [[NSUserDefaults standardUserDefaults] stringForKey:@"playlistname"];
     
-    NSLog(badvariablenames);
+    //NSLog(badvariablenames);
     
     NSString *hi = [NSString stringWithFormat:@"https://youparty.firebaseio.com/playlists/%@/videos",badvariablenames];
     
     Firebase* videolist = [[Firebase alloc] initWithUrl:hi];
     
-    NSLog(@"%@", videolist.description);
+    //NSLog(@"%@", videolist.description);
     
     [playButton addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
 
@@ -150,7 +150,7 @@
     
     thumbnail.image = [UIImage imageNamed:@"thumbnail.png"];
     
-    NSLog(url);
+    //NSLog(url);
     
     //NSString *imageUrl = @"http://www.foo.com/myImage.jpg";
     [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
