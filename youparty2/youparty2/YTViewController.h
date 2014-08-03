@@ -12,7 +12,6 @@
 #import "MGScrollView.h"
 
 #import "JSONModelLib.h"
-#import "VideoModel.h"
 
 #import "PhotoBox.h"
 #import "WebVideoViewController.h"
