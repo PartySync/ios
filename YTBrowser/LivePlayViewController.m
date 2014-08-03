@@ -31,6 +31,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    videoNumber = 0;
+    
     videoURLs = [[NSMutableArray alloc] init];
     videos = [[NSMutableArray alloc] init];
     
@@ -54,12 +56,13 @@
         
     }];
     
-    Firebase* theplaylistloc = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://youparty.firebaseio.com/playlists/%@",badvariablenames]];
-    
-    [theplaylistloc observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        theVideoURL = snapshot.value[@"url"];
-    }];
-
+    player.delegate = self;
+}
+-(void) viewWillAppear:(BOOL)animated {
+    dispatch_time_t countdownTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC));
+    dispatch_after(countdownTime, dispatch_get_main_queue(), ^(void){
+        [self updatePlaylist];
+    });
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
@@ -114,6 +117,8 @@
     
     NSDictionary* chatMessage = [videos objectAtIndex:index.row];
     
+    [videoURLs addObject:chatMessage[@"url"]];
+    
     title.text = chatMessage[@"name"];
     [title sizeToFit];
     
@@ -132,6 +137,34 @@
     }];
     
     return cell;
+}
+-(void) updatePlaylist {
+//    for (int i = 0; i < [videoURLs count]; i++) {
+    
+//        if (videoNumber == 0) {
+            [player loadWithVideoId:[NSString stringWithFormat:@"%@", videoURLs[videoNumber]]];
+//
+//        } else {
+//            [player loadVideoById:[NSString stringWithFormat:@"%@", videoURLs[i]] startSeconds:<#(float)#> suggestedQuality:<#(YTPlaybackQuality)#>:videoURLs[i] index:i startSeconds:0 suggestedQuality:kYTPlaybackQualityLarge];
+//        }
+//    }
+}
+
+- (void)playerView:(YTPlayerView *)playerView didChangeToState:(YTPlayerState)state {
+    switch (state) {
+        case kYTPlayerStatePlaying:
+            NSLog(@"Started playback");
+            break;
+        case kYTPlayerStatePaused:
+            NSLog(@"Paused playback");
+            break;
+        case kYTPlayerStateEnded:
+            videoNumber += 1;
+            [self updatePlaylist];
+            break;
+        default:
+            break;
+    }
 }
 
 

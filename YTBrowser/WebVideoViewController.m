@@ -40,7 +40,7 @@
     
     NSLog(@"Embed video id: %@", videoId);
     
-    [self.playerView loadWithVideoId:[NSString stringWithFormat:@"%@", videoId]];\
+    [self.playerView loadWithVideoId:[NSString stringWithFormat:@"%@", videoId]];
     
     [addButton addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
     

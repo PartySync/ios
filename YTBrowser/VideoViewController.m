@@ -62,7 +62,7 @@
     
     //NSLog(@"%@", videolist.description);
     
-    [playButton addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
+    [playButton addTarget:self action:@selector(moveToLivePlay) forControlEvents:UIControlEventTouchUpInside];
     
 
     

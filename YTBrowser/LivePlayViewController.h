@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "YTPlayerView.h"
 
-@interface LivePlayViewController : UIViewController {
+@interface LivePlayViewController : UIViewController <YTPlayerViewDelegate> {
     NSMutableArray *videos;
     NSMutableArray *videoURLs;
+    int videoNumber;
 }
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
