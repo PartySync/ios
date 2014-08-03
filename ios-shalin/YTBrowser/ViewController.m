@@ -29,6 +29,8 @@
 
 @implementation ViewController
 
+@synthesize backButton;
+
 // fixes orientation issues that the user may have
 -(BOOL)shouldAutorotate {
     return NO;
@@ -61,7 +63,7 @@
     fldSearch.font = [UIFont systemFontOfSize:24];
     fldSearch.delegate = self;
     fldSearch.placeholder = @"Search YouTube...";
-    fldSearch.text = @"Dawn of the planet of the apes trailer";
+    fldSearch.text = @"rick roll";
     fldSearch.clearButtonMode = UITextFieldViewModeAlways;
     fldSearch.autocapitalizationType = UITextAutocapitalizationTypeNone;
     [searchBox addSubview: fldSearch];
@@ -71,6 +73,14 @@
     
     //fire up the first search
     [self searchYoutubeVideosForTerm: fldSearch.text];
+    
+    [backButton addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
+
+}
+
+-(void) buttonAction
+{
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 //fire up API search on Enter pressed

@@ -15,5 +15,10 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *playlistName;
 
+@property (strong, nonatomic) IBOutlet UIButton *vidButton;
+
 @property (strong, nonatomic) IBOutlet UIButton *playButton;
+
+
+
 @end
