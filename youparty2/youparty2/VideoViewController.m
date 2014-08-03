@@ -18,6 +18,8 @@
 }
 
 @synthesize tableView;
+@synthesize playButton;
+@synthesize playlistName;
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -51,6 +53,14 @@
         // Reload the table view so the new message will show up.
         
         [tableView reloadData];
+        
+    }];
+    
+    Firebase* theplaylistloc = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://youparty.firebaseio.com/playlists/%@",badvariablenames]];
+    
+    [theplaylistloc observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        
+        playlistName.text = snapshot.value[@"name"];
         
     }];
 }
@@ -88,13 +98,19 @@
     
     static NSString *CellIdentifier = @"Cell";
     
-    UILabel* title = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, 230, 100)];
+    UILabel* title = [[UILabel alloc] initWithFrame:CGRectMake(95, 10, 230, 60)];
     title.backgroundColor = [UIColor clearColor];
     title.numberOfLines = 0;
     title.lineBreakMode = UILineBreakModeWordWrap;
     title.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:20];
     
-    UIImageView* thumbnail = [[UIImageView alloc] initWithFrame:CGRectMake(0, 10, 60, 100)];
+    UILabel* detail = [[UILabel alloc] initWithFrame:CGRectMake(97, 40, 230, 60)];
+    detail.backgroundColor = [UIColor clearColor];
+    detail.numberOfLines = 0;
+    detail.lineBreakMode = UILineBreakModeWordWrap;
+    detail.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:10];
+    
+    UIImageView* thumbnail = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 75, 60)];
     
     
     UITableViewCell *cell = [table dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -104,12 +120,16 @@
     }
     
     [cell addSubview:title];
+    [cell addSubview:detail];
     [cell addSubview:thumbnail];
     
     NSDictionary* chatMessage = [videos objectAtIndex:index.row];
     
     title.text = chatMessage[@"name"];
     [title sizeToFit];
+    
+    detail.text = [NSString stringWithFormat:@"youtube.com/%@",chatMessage[@"url"]];
+    [detail sizeToFit];
     
     NSString* url = [NSString stringWithFormat:@"http://img.youtube.com/vi/%@/0.jpg",chatMessage[@"url"]];
     
@@ -123,7 +143,7 @@
     }];
     
     //cell.textLabel.text = chatMessage[@"name"];
-    cell.detailTextLabel.text = chatMessage[@"url"];
+    //cell.detailTextLabel.text = chatMessage[@"url"];
     
     //
 
