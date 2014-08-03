@@ -141,17 +141,24 @@
 //        }
 //    }
     
-    
+    NSString *url = [NSString stringWithFormat:@"https://www.youtube.com/v/%@?autoplay=1&playsinline=1&rel=0&playlist=", videoURLs[0]];
+
     NSString *htmlString = [NSString stringWithFormat:@"<html><head>\
                             <meta name = \"viewport\" content = \"initial-scale = 1.0, user-scalable = no, width = 320\"/></head>\
                             <body style=\"background:#000;margin-top:0px;margin-left:0px\">\
                             <iframe id=\"ytplayer\" type=\"text/html\" width=\"320\" height=\"240\"\
-                            src=\"https://www.youtube.com/v/%@?autoplay=1&playsinline=1&rel=0&playlist=\"\
+                            src=\"%@\"\
                             frameborder=\"0\"/>\
-                            </body></html>", videoURLs[0]];
+                            </body></html>", url];
+    
+    
+//    NSString *htmlFile = [[NSBundle mainBundle] pathForResource:@"sample" ofType:@"html"];
+//    NSString* htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
+//    [webView loadHTMLString:htmlString baseURL:nil];
+//    
     NSString *newString;
     
-    for (int i = 0; i < [videoURLs count]; i++) {
+    for (int i = 1; i < [videoURLs count]; i++) {
         newString = [htmlString stringByAppendingString:[NSString stringWithFormat:@"%@,", videoURLs[i]]];
     }
     
