@@ -36,12 +36,14 @@
 		3890A0A2198DA1AD00EC2597 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3890A093198DA1AD00EC2597 /* AppDelegate.m */; };
 		3890A0A3198DA1AD00EC2597 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3890A094198DA1AD00EC2597 /* InfoPlist.strings */; };
 		3890A0A4198DA1AD00EC2597 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3890A096198DA1AD00EC2597 /* MainStoryboard.storyboard */; };
-		3890A0A5198DA1AD00EC2597 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 3890A098198DA1AD00EC2597 /* iTunesArtwork */; };
 		3890A0A6198DA1AD00EC2597 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3890A099198DA1AD00EC2597 /* main.m */; };
 		3890A0A7198DA1AD00EC2597 /* PhotoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 3890A09B198DA1AD00EC2597 /* PhotoBox.m */; };
 		3890A0A8198DA1AD00EC2597 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3890A09D198DA1AD00EC2597 /* ViewController.m */; };
 		3890A0A9198DA1AD00EC2597 /* WebVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3890A09F198DA1AD00EC2597 /* WebVideoViewController.m */; };
 		3890A0AA198DA1AD00EC2597 /* YTBrowser-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3890A0A0198DA1AD00EC2597 /* YTBrowser-Info.plist */; };
+		3890A0B0198DCFEA00EC2597 /* YTPlayerView-iframe-player.html in Resources */ = {isa = PBXBuildFile; fileRef = 3890A0AC198DCFEA00EC2597 /* YTPlayerView-iframe-player.html */; };
+		3890A0B1198DCFEA00EC2597 /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3890A0AF198DCFEA00EC2597 /* YTPlayerView.m */; };
+		3890A0B3198DDCAF00EC2597 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3890A0B2198DDCAF00EC2597 /* Images.xcassets */; };
 		9CA623DD169591AC003F6334 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA623DC169591AC003F6334 /* UIKit.framework */; };
 		9CA623DF169591AC003F6334 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA623DE169591AC003F6334 /* Foundation.framework */; };
 		9CA623E1169591AC003F6334 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA623E0169591AC003F6334 /* CoreGraphics.framework */; };
@@ -112,7 +114,6 @@
 		3890A093198DA1AD00EC2597 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3890A095198DA1AD00EC2597 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3890A097198DA1AD00EC2597 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		3890A098198DA1AD00EC2597 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		3890A099198DA1AD00EC2597 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3890A09A198DA1AD00EC2597 /* PhotoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoBox.h; sourceTree = "<group>"; };
 		3890A09B198DA1AD00EC2597 /* PhotoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoBox.m; sourceTree = "<group>"; };
@@ -122,6 +123,10 @@
 		3890A09F198DA1AD00EC2597 /* WebVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebVideoViewController.m; sourceTree = "<group>"; };
 		3890A0A0198DA1AD00EC2597 /* YTBrowser-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "YTBrowser-Info.plist"; sourceTree = "<group>"; };
 		3890A0A1198DA1AD00EC2597 /* YTBrowser-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YTBrowser-Prefix.pch"; sourceTree = "<group>"; };
+		3890A0AC198DCFEA00EC2597 /* YTPlayerView-iframe-player.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "YTPlayerView-iframe-player.html"; sourceTree = "<group>"; };
+		3890A0AE198DCFEA00EC2597 /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTPlayerView.h; sourceTree = "<group>"; };
+		3890A0AF198DCFEA00EC2597 /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTPlayerView.m; sourceTree = "<group>"; };
+		3890A0B2198DDCAF00EC2597 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9CA623D8169591AC003F6334 /* YTBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YTBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CA623DC169591AC003F6334 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9CA623DE169591AC003F6334 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -155,6 +160,8 @@
 		3890A01E198D9F5900EC2597 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3890A0AB198DCFEA00EC2597 /* Assets */,
+				3890A0AD198DCFEA00EC2597 /* Classes */,
 				3890A01F198D9F5900EC2597 /* JSONModel */,
 				3890A039198D9F5900EC2597 /* MGBox */,
 			);
@@ -277,7 +284,6 @@
 				3890A093198DA1AD00EC2597 /* AppDelegate.m */,
 				3890A094198DA1AD00EC2597 /* InfoPlist.strings */,
 				3890A096198DA1AD00EC2597 /* MainStoryboard.storyboard */,
-				3890A098198DA1AD00EC2597 /* iTunesArtwork */,
 				3890A099198DA1AD00EC2597 /* main.m */,
 				3890A09A198DA1AD00EC2597 /* PhotoBox.h */,
 				3890A09B198DA1AD00EC2597 /* PhotoBox.m */,
@@ -287,8 +293,26 @@
 				3890A09F198DA1AD00EC2597 /* WebVideoViewController.m */,
 				3890A0A0198DA1AD00EC2597 /* YTBrowser-Info.plist */,
 				3890A0A1198DA1AD00EC2597 /* YTBrowser-Prefix.pch */,
+				3890A0B2198DDCAF00EC2597 /* Images.xcassets */,
 			);
 			path = YTBrowser;
+			sourceTree = "<group>";
+		};
+		3890A0AB198DCFEA00EC2597 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				3890A0AC198DCFEA00EC2597 /* YTPlayerView-iframe-player.html */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		3890A0AD198DCFEA00EC2597 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3890A0AE198DCFEA00EC2597 /* YTPlayerView.h */,
+				3890A0AF198DCFEA00EC2597 /* YTPlayerView.m */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		9CA623CD169591AC003F6334 = {
@@ -387,9 +411,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3890A0AA198DA1AD00EC2597 /* YTBrowser-Info.plist in Resources */,
+				3890A0B3198DDCAF00EC2597 /* Images.xcassets in Resources */,
 				3890A0A4198DA1AD00EC2597 /* MainStoryboard.storyboard in Resources */,
-				3890A0A5198DA1AD00EC2597 /* iTunesArtwork in Resources */,
 				3890A0A3198DA1AD00EC2597 /* InfoPlist.strings in Resources */,
+				3890A0B0198DCFEA00EC2597 /* YTPlayerView-iframe-player.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +438,7 @@
 				3890A073198D9F5900EC2597 /* JSONAPI.m in Sources */,
 				3890A07A198D9F5900EC2597 /* UIColor+MGExpanded.m in Sources */,
 				3890A077198D9F5900EC2597 /* JSONValueTransformer.m in Sources */,
+				3890A0B1198DCFEA00EC2597 /* YTPlayerView.m in Sources */,
 				3890A079198D9F5900EC2597 /* NSObject+MGEvents.m in Sources */,
 				3890A0A6198DA1AD00EC2597 /* main.m in Sources */,
 				9CA6246D169598BC003F6334 /* VideoLink.m in Sources */,
@@ -511,6 +537,8 @@
 		9CA623FD169591AC003F6334 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YTBrowser/YTBrowser-Prefix.pch";
 				INFOPLIST_FILE = "YTBrowser/YTBrowser-Info.plist";
@@ -522,6 +550,8 @@
 		9CA623FE169591AC003F6334 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YTBrowser/YTBrowser-Prefix.pch";
 				INFOPLIST_FILE = "YTBrowser/YTBrowser-Info.plist";

@@ -29,6 +29,17 @@
 
 @implementation ViewController
 
+// fixes orientation issues that the user may have
+-(BOOL)shouldAutorotate {
+    return NO;
+}
+-(NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskAll;
+}
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

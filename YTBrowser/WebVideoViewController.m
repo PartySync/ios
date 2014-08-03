@@ -13,11 +13,13 @@
     IBOutlet UIWebView* webView;
 }
 
--(void)viewDidAppear:(BOOL)animated
-{
+-(void) viewDidLoad {
+    playIDArray = [[NSMutableArray alloc] init];
+    
     VideoLink* link = self.video.link[0];
     
     NSString* videoId = nil;
+    
     NSArray *queryComponents = [link.href.query componentsSeparatedByString:@"&"];
     for (NSString* pair in queryComponents) {
         NSArray* pairComponents = [pair componentsSeparatedByString:@"="];
@@ -34,20 +36,54 @@
     
     NSLog(@"Embed video id: %@", videoId);
     
-    NSString *htmlString = @"<html><head>\
-    <meta name = \"viewport\" content = \"initial-scale = 1.0, user-scalable = no, width = 320\"/></head>\
-    <body style=\"background:#000;margin-top:0px;margin-left:0px\">\
-    <iframe id=\"ytplayer\" type=\"text/html\" width=\"320\" height=\"240\"\
-    src=\"http://www.youtube.com/embed/%@?autoplay=1\"\
-    frameborder=\"0\"/>\
-    </body></html>";
+    [self.playerView loadWithVideoId:[NSString stringWithFormat:@"%@", videoId]];
     
-    htmlString = [NSString stringWithFormat:htmlString, videoId, videoId];
-    
-    [webView loadHTMLString:htmlString baseURL:[NSURL URLWithString:@"http://www.youtube.com"]];
+    [super viewDidLoad];
+}
 
-    NSLog(@"This is the yt link: %@", link);
+-(void)viewDidAppear:(BOOL)animated
+{
+    VideoLink* link = self.video.link[0];
     
+    NSString* videoId = nil;
+    
+    NSArray *queryComponents = [link.href.query componentsSeparatedByString:@"&"];
+    for (NSString* pair in queryComponents) {
+        NSArray* pairComponents = [pair componentsSeparatedByString:@"="];
+        if ([pairComponents[0] isEqualToString:@"v"]) {
+            videoId = pairComponents[1];
+            break;
+        }
+    }
+    
+    if (!videoId) {
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Video ID not found in video URL" delegate:nil cancelButtonTitle:@"Close" otherButtonTitles: nil]show];
+        return;
+    }
+    
+    NSLog(@"Embed video id: %@", videoId);
+    
+    [self.playerView loadWithVideoId:[NSString stringWithFormat:@"%@", videoId]];
+    
+    [playIDArray addObject:[NSString stringWithFormat:@"%@", videoId]];
+    [[NSUserDefaults standardUserDefaults] setObject:playIDArray forKey:@"videoIDs"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
+//    NSString *htmlString = @"<html><head>\
+//    <meta name = \"viewport\" content = \"initial-scale = 1.0, user-scalable = no, width = 320\"/></head>\
+//    <body style=\"background:#000;margin-top:0px;margin-left:0px\">\
+//    <iframe id=\"ytplayer\" type=\"text/html\" width=\"320\" height=\"240\"\
+//    src=\"http://www.youtube.com/embed/%@?autoplay=1\"\
+//    frameborder=\"0\"/>\
+//    </body></html>";
+//    
+//    htmlString = [NSString stringWithFormat:htmlString, videoId, videoId];
+//    
+//    [webView loadHTMLString:htmlString baseURL:[NSURL URLWithString:@"http://www.youtube.com"]];
+//
+//    NSLog(@"This is the yt link: %@", link);
+//    
 }
 
 @end

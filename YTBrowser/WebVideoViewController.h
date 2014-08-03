@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "VideoModel.h"
+#import "YTPlayerView.h"
 
-@interface WebVideoViewController : UIViewController
+@interface WebVideoViewController : UIViewController {
+    NSMutableArray *playIDArray;
+}
 
 @property (weak, nonatomic) VideoModel* video;
+@property(nonatomic, strong) IBOutlet YTPlayerView *playerView;
 
 @end
