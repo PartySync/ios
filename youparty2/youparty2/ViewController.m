@@ -32,6 +32,10 @@
     usernameLabel.delegate = self;
     loginLabel.delegate = self;
     
+    
+    [self addSongToPlaylist:@"YCHacks" url:@"11d2gOApgpE" videoname:@"tookokdoksadoasd"];
+
+    
 
 }
 

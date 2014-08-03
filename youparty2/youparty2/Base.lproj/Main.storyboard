@@ -104,24 +104,6 @@
             </objects>
             <point key="canvasLocation" x="1205" y="133"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="z3V-zu-hvK">
-            <objects>
-                <viewController id="D7R-14-NmO" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="IW1-PT-a25"/>
-                        <viewControllerLayoutGuide type="bottom" id="k59-EP-8gF"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="w6w-0m-plt">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="54q-Ha-11z" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
         <!--Video View Controller-->
         <scene sceneID="fRr-8e-zc0">
             <objects>
@@ -168,24 +150,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i6j-Km-dU2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1558" y="128"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="jVW-XW-2qT">
-            <objects>
-                <viewController id="Iuh-6h-BJG" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="nVe-cW-kX2"/>
-                        <viewControllerLayoutGuide type="bottom" id="1AY-rw-IGQ"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Nuu-Xc-1Ek">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1ax-1B-oyU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
     </scenes>
 </document>
