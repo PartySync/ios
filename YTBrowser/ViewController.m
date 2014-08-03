@@ -54,13 +54,13 @@
 
     //setup the search box
     searchBox = [MGBox boxWithSize:CGSizeMake(320,44)];
-    searchBox.backgroundColor = [UIColor colorWithWhite:0.5 alpha:1];
+    searchBox.backgroundColor = [UIColor clearColor];//[UIColor colorWithWhite:0.5 alpha:1];
     
     //setup the search text field
     UITextField* fldSearch = [[UITextField alloc] initWithFrame:CGRectMake(4,4,312,35)];
     fldSearch.borderStyle = UITextBorderStyleRoundedRect;
     fldSearch.backgroundColor = [UIColor whiteColor];
-    fldSearch.font = [UIFont systemFontOfSize:24];
+    fldSearch.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:24];
     fldSearch.delegate = self;
     fldSearch.placeholder = @"Search YouTube...";
     fldSearch.text = @"rick roll";
