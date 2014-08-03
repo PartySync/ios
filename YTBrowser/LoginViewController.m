@@ -17,6 +17,7 @@
 @implementation LoginViewController
 {
     Firebase *fb;
+    //hi
 }
 
 @synthesize usernameLabel;
@@ -31,6 +32,8 @@
     // Write data to Firebase
     usernameLabel.delegate = self;
     loginLabel.delegate = self;
+    
+    //[self addSongToPlaylist:@"YCHacks" url:@"X2F4EFYM_MA" videoname:@"nomnom"];
 }
 
 
@@ -49,7 +52,7 @@
         
         [[NSUserDefaults standardUserDefaults] setValue:textField.text forKey:@"username"];
         
-        PlaylistViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"Playlist"];
+        PlaylistViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"PlaylistView"];
         [self presentViewController:vc animated:YES completion:nil];
         
         return NO;
@@ -64,7 +67,7 @@
         
         [[NSUserDefaults standardUserDefaults] setValue:textField.text forKey:@"username"];
         
-        PlaylistViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"Playlist"];
+        PlaylistViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"PlaylistView"];
         
         [self presentViewController:vc animated:YES completion:nil];
         
@@ -109,8 +112,9 @@
     Firebase* theplaylist = [playlists childByAppendingPath:playlist];
     Firebase* videos = [theplaylist childByAppendingPath:@"videos"];
     Firebase* video = [videos childByAutoId];
-    [[video childByAppendingPath:@"name"] setValue:videoname];
-    [[video childByAppendingPath:@"url"] setValue:url];
+    [video setValue:@{@"name": videoname,@"url": url}];
+//    [[video childByAppendingPath:@"name"] setValue:videoname];
+//    [[video childByAppendingPath:@"url"] setValue:url];
 }
 
 - (void)didReceiveMemoryWarning {

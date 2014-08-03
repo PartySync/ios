@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "VideoModel.h"
 #import "YTPlayerView.h"
+#import <Firebase/Firebase.h>
 
 @interface WebVideoViewController : UIViewController {
     NSMutableArray *playIDArray;
@@ -17,4 +18,7 @@
 @property (weak, nonatomic) VideoModel* video;
 @property(nonatomic, strong) IBOutlet YTPlayerView *playerView;
 
+@property (strong, nonatomic) IBOutlet UIButton *addButton;
+
+@property (strong, nonatomic) IBOutlet UIButton *fakeSegueButton;
 @end

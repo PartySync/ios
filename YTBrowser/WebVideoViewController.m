@@ -11,7 +11,11 @@
 @implementation WebVideoViewController
 {
     IBOutlet UIWebView* webView;
+    NSString* videoId;
 }
+
+@synthesize addButton;
+@synthesize fakeSegueButton;
 
 -(void) viewDidLoad {
     playIDArray = [[NSMutableArray alloc] init];
@@ -36,7 +40,12 @@
     
     NSLog(@"Embed video id: %@", videoId);
     
-    [self.playerView loadWithVideoId:[NSString stringWithFormat:@"%@", videoId]];
+    [self.playerView loadWithVideoId:[NSString stringWithFormat:@"%@", videoId]];\
+    
+    [addButton addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    [fakeSegueButton addTarget:self action:@selector(backButtonAction) forControlEvents:UIControlEventTouchUpInside];
+
     
     [super viewDidLoad];
 }
@@ -45,7 +54,7 @@
 {
     VideoLink* link = self.video.link[0];
     
-    NSString* videoId = nil;
+    videoId = nil;
     
     NSArray *queryComponents = [link.href.query componentsSeparatedByString:@"&"];
     for (NSString* pair in queryComponents) {
@@ -68,8 +77,40 @@
     [playIDArray addObject:[NSString stringWithFormat:@"%@", videoId]];
     [[NSUserDefaults standardUserDefaults] setObject:playIDArray forKey:@"videoIDs"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+
+-(void) buttonAction
+{
+    //NSLog(videoId);
     
+    Firebase* fb = [[Firebase alloc] initWithUrl:@"https://youparty.firebaseio.com/"];
+    Firebase* playlists = [fb childByAppendingPath:@"playlists"];
+    Firebase* theplaylist = [playlists childByAppendingPath:[[NSUserDefaults standardUserDefaults] stringForKey:@"playlistname"]];
+    Firebase* videos = [theplaylist childByAppendingPath:@"videos"];
+    Firebase* video = [videos childByAutoId];
+    [video setValue:@{@"name": @"Added with ios",@"url": videoId}];
+
+}
+
+-(void) backButtonAction
+{
+    //NSLog(videoId);
     
+    [self dismissModalViewControllerAnimated:YES];
+    
+}
+
+
+//-(void) addSongToPlaylist:(NSString*) playlist url:(NSString*)url videoname:(NSString*)videoname
+//{
+//    Firebase* fb = [[Firebase alloc] initWithUrl:@"https://youparty.firebaseio.com/"];
+//    Firebase* playlists = [fb childByAppendingPath:@"playlists"];
+//    Firebase* theplaylist = [playlists childByAppendingPath:playlist];
+//    Firebase* videos = [theplaylist childByAppendingPath:@"videos"];
+//    Firebase* video = [videos childByAutoId];
+//}
+
 //    NSString *htmlString = @"<html><head>\
 //    <meta name = \"viewport\" content = \"initial-scale = 1.0, user-scalable = no, width = 320\"/></head>\
 //    <body style=\"background:#000;margin-top:0px;margin-left:0px\">\
@@ -84,6 +125,6 @@
 //
 //    NSLog(@"This is the yt link: %@", link);
 //    
-}
+
 
 @end

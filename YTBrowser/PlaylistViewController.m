@@ -90,7 +90,7 @@
     [[NSUserDefaults standardUserDefaults] setObject:playlistname forKey:@"playlistname"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    VideoViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"Videos"];
+    VideoViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"VideosView"];
     [self presentViewController:vc animated:YES completion:nil];
 }
 
