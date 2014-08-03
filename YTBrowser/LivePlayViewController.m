@@ -15,7 +15,7 @@
 
 @implementation LivePlayViewController
 
-@synthesize player, tableView;
+@synthesize player, tableView, webPlayer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,7 +30,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     videoNumber = 0;
     
     videoURLs = [[NSMutableArray alloc] init];
@@ -38,26 +37,19 @@
     
     NSString* badvariablenames = [[NSUserDefaults standardUserDefaults] stringForKey:@"playlistname"];
     
-    //NSLog(badvariablenames);
-    
     NSString *hi = [NSString stringWithFormat:@"https://youparty.firebaseio.com/playlists/%@/videos",badvariablenames];
     
     Firebase *videolist = [[Firebase alloc] initWithUrl:hi];
-    
-    //NSLog(@"%@", videolist.description);
-    
-    
+
     [videolist observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         // Add the chat message to the array.
         [videos addObject:snapshot.value];
         // Reload the table view so the new message will show up.
-        
         [self.tableView reloadData];
         
     }];
-    
     player.delegate = self;
-}
+    }
 -(void) viewWillAppear:(BOOL)animated {
     dispatch_time_t countdownTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC));
     dispatch_after(countdownTime, dispatch_get_main_queue(), ^(void){
@@ -142,12 +134,30 @@
 //    for (int i = 0; i < [videoURLs count]; i++) {
     
 //        if (videoNumber == 0) {
-            [player loadWithVideoId:[NSString stringWithFormat:@"%@", videoURLs[videoNumber]]];
+//            [player loadWithVideoId:[NSString stringWithFormat:@"%@", videoURLs[videoNumber]]];
 //
 //        } else {
 //            [player loadVideoById:[NSString stringWithFormat:@"%@", videoURLs[i]] startSeconds:<#(float)#> suggestedQuality:<#(YTPlaybackQuality)#>:videoURLs[i] index:i startSeconds:0 suggestedQuality:kYTPlaybackQualityLarge];
 //        }
 //    }
+    
+    
+    NSString *htmlString = [NSString stringWithFormat:@"<html><head>\
+                            <meta name = \"viewport\" content = \"initial-scale = 1.0, user-scalable = no, width = 320\"/></head>\
+                            <body style=\"background:#000;margin-top:0px;margin-left:0px\">\
+                            <iframe id=\"ytplayer\" type=\"text/html\" width=\"320\" height=\"240\"\
+                            src=\"https://www.youtube.com/v/%@?autoplay=1&playsinline=1&rel=0&playlist=\"\
+                            frameborder=\"0\"/>\
+                            </body></html>", videoURLs[0]];
+    NSString *newString;
+    
+    for (int i = 0; i < [videoURLs count]; i++) {
+        newString = [htmlString stringByAppendingString:[NSString stringWithFormat:@"%@,", videoURLs[i]]];
+    }
+    
+    
+    [webPlayer loadHTMLString:newString baseURL:[NSURL URLWithString:@"http://www.youtube.com"]];
+
 }
 
 - (void)playerView:(YTPlayerView *)playerView didChangeToState:(YTPlayerState)state {
