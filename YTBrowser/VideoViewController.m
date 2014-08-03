@@ -25,6 +25,17 @@
 @synthesize playlistName;
 @synthesize backButton;
 
+// fixes orientation issues that the user may have
+-(BOOL)shouldAutorotate {
+    return NO;
+}
+-(NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskAll;
+}
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
+}
+
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -81,7 +92,7 @@
     
     [theplaylistloc observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         
-        NSLog(@"%@",snapshot.value[@"name"]);
+        //NSLog(@"%@",snapshot.value[@"name"]);
         
             playlistName.text = snapshot.value[@"name"];
         

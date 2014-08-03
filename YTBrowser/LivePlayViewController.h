@@ -14,9 +14,8 @@
     NSMutableArray* videos;
     NSMutableArray* videoURLs;
     int videoNumber;
-    
     float currentTime;
-    NSString *currentVid;
+    NSString* currentVid;
 }
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;

@@ -21,6 +21,18 @@
 
 @synthesize tableView,addNewPlaylist,backButton,playlistLabel;
 
+// fixes orientation issues that the user may have
+-(BOOL)shouldAutorotate {
+    return NO;
+}
+-(NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskAll;
+}
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
+}
+
+
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -45,7 +57,15 @@
     
     Firebase* user = [[[fb childByAppendingPath:@"users"] childByAppendingPath:[[NSUserDefaults standardUserDefaults] stringForKey:@"username"]] childByAppendingPath:@"playlists"];
     
-    NSLog([user description]);
+    NSLog(@"%@", [user description]);
+    
+    playlistLabel.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"add a playlist" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    
+    playlistLabel.layer.borderColor = [[UIColor whiteColor] CGColor];
+    playlistLabel.layer.borderWidth= 1.0f;
+    playlistLabel.layer.cornerRadius=8.0f;
+    
+    playlistLabel.delegate = self;
     
     [user observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         // Add the chat message to the array.
@@ -77,18 +97,47 @@
 {
     if(![playlistLabel.text isEqualToString:@""])
     {
-        Firebase* playlistsf = [fb childByAppendingPath:@"playlists"];
-        NSString* playlistname = playlistLabel.text;
-        Firebase* theplaylist = [playlistsf childByAppendingPath:playlistname];
-        [[theplaylist childByAppendingPath:@"name"] setValue:playlistname];
-        Firebase* videos = [theplaylist childByAppendingPath:@"videos"];
-        //[videos setValue:@"insert videos part of playlist here"];
+        bool worked = true;
         
-        Firebase* users = [fb childByAppendingPath:@"users"];
-        Firebase* myself = [users childByAppendingPath:[[NSUserDefaults standardUserDefaults] stringForKey:@"username"]];
-        Firebase* playists = [myself childByAppendingPath:@"playlists"];
-        [[playists childByAutoId] setValue:playlistname];
+        for(int i = 0; i < [playlists count]; i++)
+        {
+            if([[playlists objectAtIndex:i] isEqualToString:playlistLabel.text])
+            {
+                worked = false;
+            }
+        }
+        
+        if(worked == true)
+        {
+            Firebase* playlistsf = [fb childByAppendingPath:@"playlists"];
+            NSString* playlistname = playlistLabel.text;
+            Firebase* theplaylist = [playlistsf childByAppendingPath:playlistname];
+            [[theplaylist childByAppendingPath:@"name"] setValue:playlistname];
+            Firebase* videos = [theplaylist childByAppendingPath:@"videos"];
+            //[videos setValue:@"insert videos part of playlist here"];
+            
+            Firebase* users = [fb childByAppendingPath:@"users"];
+            Firebase* myself = [users childByAppendingPath:[[NSUserDefaults standardUserDefaults] stringForKey:@"username"]];
+            Firebase* playists = [myself childByAppendingPath:@"playlists"];
+            [[playists childByAutoId] setValue:playlistname];
+        }
     }
+    
+    playlistLabel.text = @"";
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.25];
+    self.view.frame = CGRectMake(0,0,320,400);
+    [UIView commitAnimations];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == playlistLabel) {
+        [textField resignFirstResponder];
+        [self buttonAction];
+        return NO;
+    }
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -116,8 +165,19 @@
     [[NSUserDefaults standardUserDefaults] setObject:playlistname forKey:@"playlistname"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     VideoViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"VideosView"];
     [self presentViewController:vc animated:YES completion:nil];
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.25];
+    self.view.frame = CGRectMake(0,-160,320,400);
+    [UIView commitAnimations];
+    
 }
 
 - (UITableViewCell*)tableView:(UITableView*)table cellForRowAtIndexPath:(NSIndexPath *)index

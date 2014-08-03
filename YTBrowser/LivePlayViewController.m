@@ -47,7 +47,7 @@
     //NSLog(@"%@", videolist.description);
     
     [backButton addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
-
+    
     
     
     [videolist observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
@@ -56,7 +56,7 @@
         // Reload the table view so the new message will show up.
         
         [self.tableView reloadData];
-//        [self updatePlaylist];
+        //        [self updatePlaylist];
         
         
     }];
@@ -165,7 +165,7 @@
     
     title.text = titlestring;//chatMessage[@"name"];
     [title sizeToFit];
-
+    
     
     detail.text = [NSString stringWithFormat:@"youtube.com/%@",chatMessage[@"url"]];
     [detail sizeToFit];
@@ -183,15 +183,13 @@
     return cell;
 }
 -(void) updatePlaylist {
-    
-    //[player playVideo];
     if (currentVid == 0 || currentVid == nil) {
         [player loadWithVideoId:[NSString stringWithFormat:@"%@", videoURLs[videoNumber]]];
     } else {
         [player stopVideo];
         [player loadWithVideoId:currentVid];
     }
-//    [player loadVideoById:[NSString stringWithFormat:@"%f", currentVid] startSeconds:0 suggestedQuality:@"strong"];
+    //    [player loadVideoById:[NSString stringWithFormat:@"%f", currentVid] startSeconds:0 suggestedQuality:@"strong"];
 }
 
 -(void) playVideoDelay
@@ -204,7 +202,7 @@
 
 - (void)playerView:(YTPlayerView *)playerView didChangeToState:(YTPlayerState)state {
     switch (state) {
-//        case k
+            //        case k
         case kYTPlayerStatePlaying:
             NSLog(@"Started playback");
             break;
