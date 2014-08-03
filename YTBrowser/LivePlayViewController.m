@@ -185,7 +185,12 @@
 -(void) updatePlaylist {
     
     //[player playVideo];
-    [player loadWithVideoId:currentVid];
+    if (currentVid == 0 || currentVid == nil) {
+        [player loadWithVideoId:[NSString stringWithFormat:@"%@", videoURLs[videoNumber]]];
+    } else {
+        [player stopVideo];
+        [player loadWithVideoId:currentVid];
+    }
 //    [player loadVideoById:[NSString stringWithFormat:@"%f", currentVid] startSeconds:0 suggestedQuality:@"strong"];
 }
 
@@ -207,7 +212,9 @@
             NSLog(@"Paused playback");
             break;
         case kYTPlayerStateEnded:
-            videoNumber += 1;
+            if (currentVid == 0 || currentVid == nil) {
+                videoNumber += 1;
+            }
             [self updatePlaylist];
             [self playVideoDelay];
             break;
