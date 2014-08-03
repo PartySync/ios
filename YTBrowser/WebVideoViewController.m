@@ -90,6 +90,8 @@
     Firebase* videos = [theplaylist childByAppendingPath:@"videos"];
     Firebase* video = [videos childByAutoId];
     [video setValue:@{@"name": @"Added with ios",@"url": videoId}];
+    
+    [self backButtonAction];
 
 }
 
