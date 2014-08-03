@@ -33,6 +33,9 @@
     usernameLabel.delegate = self;
     loginLabel.delegate = self;
     
+    [usernameLabel setBackgroundColor:[UIColor clearColor]];
+    [loginLabel setBackgroundColor:[UIColor clearColor]];
+    
     //[self setUpNewPlaylist:@"YCHacks"];
     
     //[self addSongToPlaylist:@"YCHacks" url:@"X2F4EFYM_MA" videoname:@"nomnom"];
