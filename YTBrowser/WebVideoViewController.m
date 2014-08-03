@@ -17,18 +17,6 @@
 @synthesize addButton;
 @synthesize fakeSegueButton;
 
-// fixes orientation issues that the user may have
--(BOOL)shouldAutorotate {
-    return NO;
-}
--(NSUInteger)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskAll;
-}
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
-}
-
-
 -(void) viewDidLoad {
     playIDArray = [[NSMutableArray alloc] init];
     
@@ -102,8 +90,6 @@
     Firebase* videos = [theplaylist childByAppendingPath:@"videos"];
     Firebase* video = [videos childByAutoId];
     [video setValue:@{@"name": @"Added with ios",@"url": videoId}];
-    
-    [self backButtonAction];
 
 }
 

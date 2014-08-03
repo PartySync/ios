@@ -15,7 +15,7 @@
 
 @implementation LivePlayViewController
 
-@synthesize player, tableView, backButton;
+@synthesize player, tableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,9 +46,6 @@
     
     //NSLog(@"%@", videolist.description);
     
-    [backButton addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
-    
-    
     
     [videolist observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         // Add the chat message to the array.
@@ -56,38 +53,21 @@
         // Reload the table view so the new message will show up.
         
         [self.tableView reloadData];
-        //        [self updatePlaylist];
+//        [self updatePlaylist];
         
         
-    }];
-    
-    Firebase* firebaseRef = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://youparty.firebaseio.com/playlists/%@/",badvariablenames]];
-    
-    [firebaseRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        NSLog(@"%f",[snapshot.value[@"currentVidTime"] floatValue]);
-        NSLog(@"%f",[snapshot.value[@"currentVid"] floatValue]);
-        
-        currentTime = [snapshot.value[@"currentVidTime"] floatValue];
-        currentVid = snapshot.value[@"currentVid"];
     }];
     
     player.delegate = self;
     
 }
-
-
--(void) buttonAction
-{
-    [self dismissModalViewControllerAnimated:YES];
-}
-
 -(void) viewWillAppear:(BOOL)animated {
     dispatch_time_t countdownTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC));
     dispatch_after(countdownTime, dispatch_get_main_queue(), ^(void){
         [self updatePlaylist];
     });
     
-    dispatch_time_t countdownTime2 = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC));
+    dispatch_time_t countdownTime2 = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC));
     dispatch_after(countdownTime2, dispatch_get_main_queue(), ^(void){
         [player playVideo];
     });
@@ -122,14 +102,12 @@
     UILabel* title = [[UILabel alloc] initWithFrame:CGRectMake(95, 10, 230, 60)];
     title.backgroundColor = [UIColor clearColor];
     title.numberOfLines = 0;
-    title.textColor = [UIColor whiteColor];
     title.lineBreakMode = UILineBreakModeWordWrap;
     title.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:20];
     
     UILabel* detail = [[UILabel alloc] initWithFrame:CGRectMake(97, 40, 230, 60)];
     detail.backgroundColor = [UIColor clearColor];
     detail.numberOfLines = 0;
-    detail.textColor = [UIColor whiteColor];
     detail.lineBreakMode = UILineBreakModeWordWrap;
     detail.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:10];
     
@@ -145,27 +123,13 @@
     [cell addSubview:title];
     [cell addSubview:detail];
     [cell addSubview:thumbnail];
-    cell.backgroundColor = [UIColor clearColor];
     
     NSDictionary* chatMessage = [videos objectAtIndex:index.row];
     
     [videoURLs addObject:chatMessage[@"url"]];
     
-    NSData *data=[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://gdata.youtube.com/feeds/api/videos/%@?v=2&alt=jsonc",chatMessage[@"url"]]]];
-    NSError *error=nil;
-    NSDictionary *response=[NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error:&error];
-    //NSString* sth=[response objectForKey: @"some_your_key"];
-    
-    NSString* titlestring = [[response objectForKey:@"data"] objectForKey:@"title"];
-    
-    if(titlestring.length > 20)
-    {
-        titlestring = [NSString stringWithFormat:@"%@...",[titlestring substringToIndex:18]];
-    }
-    
-    title.text = titlestring;//chatMessage[@"name"];
+    title.text = chatMessage[@"name"];
     [title sizeToFit];
-    
     
     detail.text = [NSString stringWithFormat:@"youtube.com/%@",chatMessage[@"url"]];
     [detail sizeToFit];
@@ -176,6 +140,7 @@
     
     //NSLog(url);
     
+    //NSString *imageUrl = @"http://www.foo.com/myImage.jpg";
     [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         thumbnail.image = [UIImage imageWithData:data];
     }];
@@ -183,18 +148,14 @@
     return cell;
 }
 -(void) updatePlaylist {
-    if (currentVid == 0 || currentVid == nil) {
-        [player loadWithVideoId:[NSString stringWithFormat:@"%@", videoURLs[videoNumber]]];
-    } else {
-        [player stopVideo];
-        [player loadWithVideoId:currentVid];
-    }
-    //    [player loadVideoById:[NSString stringWithFormat:@"%f", currentVid] startSeconds:0 suggestedQuality:@"strong"];
+    
+    //[player playVideo];
+    [player loadWithVideoId:[NSString stringWithFormat:@"%@", videoURLs[videoNumber]]];
 }
 
 -(void) playVideoDelay
 {
-    dispatch_time_t countdownTime2 = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC));
+    dispatch_time_t countdownTime2 = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC));
     dispatch_after(countdownTime2, dispatch_get_main_queue(), ^(void){
         [player playVideo];
     });
@@ -202,7 +163,7 @@
 
 - (void)playerView:(YTPlayerView *)playerView didChangeToState:(YTPlayerState)state {
     switch (state) {
-            //        case k
+//        case k
         case kYTPlayerStatePlaying:
             NSLog(@"Started playback");
             break;
@@ -210,9 +171,7 @@
             NSLog(@"Paused playback");
             break;
         case kYTPlayerStateEnded:
-            if (currentVid == 0 || currentVid == nil) {
-                videoNumber += 1;
-            }
+            videoNumber += 1;
             [self updatePlaylist];
             [self playVideoDelay];
             break;

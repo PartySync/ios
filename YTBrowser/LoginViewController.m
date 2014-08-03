@@ -23,18 +23,6 @@
 @synthesize usernameLabel;
 @synthesize loginLabel;
 
-// fixes orientation issues that the user may have
--(BOOL)shouldAutorotate {
-    return NO;
-}
--(NSUInteger)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskAll;
-}
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
-}
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -45,55 +33,18 @@
     usernameLabel.delegate = self;
     loginLabel.delegate = self;
     
-    
-    usernameLabel.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"username" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
-    
-    usernameLabel.layer.borderColor = [[UIColor whiteColor] CGColor];
-    usernameLabel.layer.borderWidth= 1.0f;
-    usernameLabel.layer.cornerRadius=8.0f;
-    
-    loginLabel.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"username" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
-    
-    loginLabel.layer.borderColor = [[UIColor whiteColor] CGColor];
-    loginLabel.layer.borderWidth= 1.0f;
-    loginLabel.layer.cornerRadius=8.0f;
-    
-    //[usernameLabel setBackgroundColor:[UIColor clearColor]];
-    //[loginLabel setBackgroundColor:[UIColor clearColor]];
-    
-    //[usernameLabel setTextColor: [UIColor whiteColor]];
-    //[loginLabel setTextColor: [UIColor whiteColor]];
-    
     //[self setUpNewPlaylist:@"YCHacks"];
     
     //[self addSongToPlaylist:@"YCHacks" url:@"X2F4EFYM_MA" videoname:@"nomnom"];
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.25];
-    self.view.frame = CGRectMake(0,-160,320,400);
-    [UIView commitAnimations];
-    
-}
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == usernameLabel) {
         [textField resignFirstResponder];
         
-        [UIView beginAnimations:nil context:NULL];
-        [UIView setAnimationDuration:0.25];
-        self.view.frame = CGRectMake(0,0,320,400);
-        [UIView commitAnimations];
-        
-        
         //Firebase* users = [fb childByAppendingPath:@"users"];
-        
-        if ([textField.text isEqualToString:@""]) {
-            
-        } else {
-
         
         [self setUpNewUser:textField.text];
         
@@ -107,7 +58,6 @@
         [self presentViewController:vc animated:YES completion:nil];
         
         textField.text = @"";
-        }
         
         return NO;
     }
@@ -115,17 +65,9 @@
     if (textField == loginLabel) {
         [textField resignFirstResponder];
         
-        [UIView beginAnimations:nil context:NULL];
-        [UIView setAnimationDuration:0.25];
-        self.view.frame = CGRectMake(0,0,320,400);
-        [UIView commitAnimations];
-        
         //Firebase* users = [fb childByAppendingPath:@"users"];
         
         //[self setUpNewUser:textField.text];
-        if ([textField.text isEqualToString:@""]) {
-            
-        } else {
         
         [[NSUserDefaults standardUserDefaults] setValue:textField.text forKey:@"username"];
         
@@ -134,7 +76,6 @@
         [self presentViewController:vc animated:YES completion:nil];
         
         textField.text = @"";
-        }
         
         return NO;
     }

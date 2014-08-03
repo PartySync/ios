@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <Firebase/Firebase.h>
-#import <QuartzCore/QuartzCore.h>
 
 @interface LoginViewController : UIViewController <UITextFieldDelegate>
 
