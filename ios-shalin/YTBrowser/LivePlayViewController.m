@@ -14,11 +14,8 @@
 @end
 
 @implementation LivePlayViewController
-{
-    float currentTime;
-}
 
-@synthesize player, tableView;
+@synthesize player, tableView, backButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,8 +30,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    currentTime = 0;
     
     videoNumber = 0;
     
@@ -51,6 +46,9 @@
     
     //NSLog(@"%@", videolist.description);
     
+    [backButton addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
+
+    
     
     [videolist observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         // Add the chat message to the array.
@@ -65,17 +63,14 @@
     
     player.delegate = self;
     
-    Firebase* playlistRoot = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://youparty.firebaseio.com/playlists/%@/",badvariablenames]];
-    
-    [playlistRoot observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        //set time
-        currentTime = [snapshot.value[@"currentVidTime"] floatValue];
-        NSLog(@"%@",snapshot.value);
-        
-        
-    }];
-    
 }
+
+
+-(void) buttonAction
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 -(void) viewWillAppear:(BOOL)animated {
     dispatch_time_t countdownTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC));
     dispatch_after(countdownTime, dispatch_get_main_queue(), ^(void){
@@ -117,12 +112,14 @@
     UILabel* title = [[UILabel alloc] initWithFrame:CGRectMake(95, 10, 230, 60)];
     title.backgroundColor = [UIColor clearColor];
     title.numberOfLines = 0;
+    title.textColor = [UIColor whiteColor];
     title.lineBreakMode = UILineBreakModeWordWrap;
     title.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:20];
     
     UILabel* detail = [[UILabel alloc] initWithFrame:CGRectMake(97, 40, 230, 60)];
     detail.backgroundColor = [UIColor clearColor];
     detail.numberOfLines = 0;
+    detail.textColor = [UIColor whiteColor];
     detail.lineBreakMode = UILineBreakModeWordWrap;
     detail.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:10];
     
@@ -138,13 +135,27 @@
     [cell addSubview:title];
     [cell addSubview:detail];
     [cell addSubview:thumbnail];
+    cell.backgroundColor = [UIColor clearColor];
     
     NSDictionary* chatMessage = [videos objectAtIndex:index.row];
     
     [videoURLs addObject:chatMessage[@"url"]];
     
-    title.text = chatMessage[@"name"];
+    NSData *data=[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://gdata.youtube.com/feeds/api/videos/%@?v=2&alt=jsonc",chatMessage[@"url"]]]];
+    NSError *error=nil;
+    NSDictionary *response=[NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error:&error];
+    //NSString* sth=[response objectForKey: @"some_your_key"];
+    
+    NSString* titlestring = [[response objectForKey:@"data"] objectForKey:@"title"];
+    
+    if(titlestring.length > 20)
+    {
+        titlestring = [NSString stringWithFormat:@"%@...",[titlestring substringToIndex:18]];
+    }
+    
+    title.text = titlestring;//chatMessage[@"name"];
     [title sizeToFit];
+
     
     detail.text = [NSString stringWithFormat:@"youtube.com/%@",chatMessage[@"url"]];
     [detail sizeToFit];
@@ -166,7 +177,6 @@
     
     //[player playVideo];
     [player loadWithVideoId:[NSString stringWithFormat:@"%@", videoURLs[videoNumber]]];
-    //[player  cueVideoById:[NSString stringWithFormat:@"%@", videoURLs[videoNumber]] startSeconds:50 suggestedQuality:@"large"];
 }
 
 -(void) playVideoDelay

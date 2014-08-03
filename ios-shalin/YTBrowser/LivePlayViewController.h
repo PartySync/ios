@@ -19,4 +19,6 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) IBOutlet YTPlayerView *player;
+
+@property (strong, nonatomic) IBOutlet UIButton *backButton;
 @end

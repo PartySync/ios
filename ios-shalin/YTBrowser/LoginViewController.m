@@ -33,6 +33,25 @@
     usernameLabel.delegate = self;
     loginLabel.delegate = self;
     
+    
+    usernameLabel.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"username" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    
+    usernameLabel.layer.borderColor = [[UIColor whiteColor] CGColor];
+    usernameLabel.layer.borderWidth= 1.0f;
+    usernameLabel.layer.cornerRadius=8.0f;
+    
+    loginLabel.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"username" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    
+    loginLabel.layer.borderColor = [[UIColor whiteColor] CGColor];
+    loginLabel.layer.borderWidth= 1.0f;
+    loginLabel.layer.cornerRadius=8.0f;
+    
+    //[usernameLabel setBackgroundColor:[UIColor clearColor]];
+    //[loginLabel setBackgroundColor:[UIColor clearColor]];
+    
+    //[usernameLabel setTextColor: [UIColor whiteColor]];
+    //[loginLabel setTextColor: [UIColor whiteColor]];
+    
     //[self setUpNewPlaylist:@"YCHacks"];
     
     //[self addSongToPlaylist:@"YCHacks" url:@"X2F4EFYM_MA" videoname:@"nomnom"];
