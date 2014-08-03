@@ -47,12 +47,12 @@
 		3890A0B6198DDF3100EC2597 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3890A0B5198DDF3100EC2597 /* LoginViewController.m */; };
 		3890A0B9198DDF4000EC2597 /* PlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3890A0B8198DDF4000EC2597 /* PlaylistViewController.m */; };
 		3890A0BC198DDF4A00EC2597 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3890A0BB198DDF4A00EC2597 /* VideoViewController.m */; };
-		3890A0BD198DE78800EC2597 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA623DE169591AC003F6334 /* Foundation.framework */; };
 		3890A0BE198DE80A00EC2597 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA624351695927C003F6334 /* CoreText.framework */; };
 		3890A0BF198DE81200EC2597 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA6243316959278003F6334 /* QuartzCore.framework */; };
-		3890A0C0198DE81B00EC2597 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA623DC169591AC003F6334 /* UIKit.framework */; };
+		3890A0C0198DE81B00EC2597 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA623DC169591AC003F6334 /* UIKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		3890A0C1198DE82400EC2597 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA623E0169591AC003F6334 /* CoreGraphics.framework */; };
-		3890A0C3198DE89400EC2597 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3890A0C2198DE89400EC2597 /* CFNetwork.framework */; };
+		389BF9B8198DEADE005C8C13 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA623DE169591AC003F6334 /* Foundation.framework */; };
+		389BF9B9198DEB11005C8C13 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3890A0C2198DE89400EC2597 /* CFNetwork.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9CA6246D169598BC003F6334 /* VideoLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA62468169598BC003F6334 /* VideoLink.m */; };
 		9CA6246E169598BC003F6334 /* VideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6246A169598BC003F6334 /* VideoModel.m */; };
 		9CA624811695A2D5003F6334 /* MediaThumbnail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA624801695A2D5003F6334 /* MediaThumbnail.m */; };
@@ -160,9 +160,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3890A0BD198DE78800EC2597 /* Foundation.framework in Frameworks */,
-				3890A0C3198DE89400EC2597 /* CFNetwork.framework in Frameworks */,
 				3890A0C1198DE82400EC2597 /* CoreGraphics.framework in Frameworks */,
+				389BF9B8198DEADE005C8C13 /* Foundation.framework in Frameworks */,
+				389BF9B9198DEB11005C8C13 /* CFNetwork.framework in Frameworks */,
 				3890A0C0198DE81B00EC2597 /* UIKit.framework in Frameworks */,
 				3890A0BF198DE81200EC2597 /* QuartzCore.framework in Frameworks */,
 				3890A0BE198DE80A00EC2597 /* CoreText.framework in Frameworks */,
