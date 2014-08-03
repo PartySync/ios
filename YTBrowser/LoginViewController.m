@@ -36,6 +36,9 @@
     [usernameLabel setBackgroundColor:[UIColor clearColor]];
     [loginLabel setBackgroundColor:[UIColor clearColor]];
     
+    [usernameLabel setTextColor: [UIColor whiteColor]];
+    [loginLabel setTextColor: [UIColor whiteColor]];
+    
     //[self setUpNewPlaylist:@"YCHacks"];
     
     //[self addSongToPlaylist:@"YCHacks" url:@"X2F4EFYM_MA" videoname:@"nomnom"];
