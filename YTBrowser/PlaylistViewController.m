@@ -175,7 +175,7 @@
 {
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.25];
-    self.view.frame = CGRectMake(0,-160,320,400);
+    self.view.frame = CGRectMake(0,-220,320,400);
     [UIView commitAnimations];
     
 }
