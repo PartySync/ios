@@ -14,6 +14,9 @@
 @end
 
 @implementation LivePlayViewController
+{
+    float currentTime;
+}
 
 @synthesize player, tableView;
 
@@ -30,6 +33,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    currentTime = 0;
     
     videoNumber = 0;
     
@@ -59,6 +64,16 @@
     }];
     
     player.delegate = self;
+    
+    Firebase* playlistRoot = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://youparty.firebaseio.com/playlists/%@/",badvariablenames]];
+    
+    [playlistRoot observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        //set time
+        currentTime = [snapshot.value[@"currentVidTime"] floatValue];
+        NSLog(@"%@",snapshot.value);
+        
+        
+    }];
     
 }
 -(void) viewWillAppear:(BOOL)animated {
@@ -151,6 +166,7 @@
     
     //[player playVideo];
     [player loadWithVideoId:[NSString stringWithFormat:@"%@", videoURLs[videoNumber]]];
+    //[player  cueVideoById:[NSString stringWithFormat:@"%@", videoURLs[videoNumber]] startSeconds:50 suggestedQuality:@"large"];
 }
 
 -(void) playVideoDelay
