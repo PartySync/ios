@@ -13,6 +13,11 @@
 
 @end
 
+static NSString *youTubeVideoHTML = @"<!DOCTYPE html><html><head><style>body{margin:0px 0px 0px 0px;}</style></head> <body> <div id=\"player\"></div> <script> var tag = document.createElement('script'); tag.src = \"http://www.youtube.com/player_api\"; var firstScriptTag = document.getElementsByTagName('script')[0]; firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); var vids = ['9jyYssjH06c', 'uxsWjeiQ76s', 'IN7o2Iy89WQ']; var player; function onYouTubePlayerAPIReady() { player = new YT.Player('player', { width:'%0.0f', height:'%0.0f', events: { 'onReady': function (event) {event.target.playVideo();player.loadVideoById(vids[0], 0,'large');  }, 'onStateChange': function (event) { if (event.data == 0) { vids.shift(); alert(vids); player.loadVideoById(vids[0], 0, 'large'); } } } }); } function onPlayerReady(event) { event.target.playVideo(); }</script> </body> </html>";
+
+
+
+
 @implementation LivePlayViewController
 
 @synthesize player, tableView, webPlayer;
@@ -51,7 +56,7 @@
     player.delegate = self;
     }
 -(void) viewWillAppear:(BOOL)animated {
-    dispatch_time_t countdownTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC));
+    dispatch_time_t countdownTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC));
     dispatch_after(countdownTime, dispatch_get_main_queue(), ^(void){
         [self updatePlaylist];
     });
@@ -141,30 +146,55 @@
 //        }
 //    }
     
-    NSString *url = [NSString stringWithFormat:@"https://www.youtube.com/v/%@?autoplay=1&playsinline=1&rel=0&playlist=", videoURLs[0]];
 
-    NSString *htmlString = [NSString stringWithFormat:@"<html><head>\
-                            <meta name = \"viewport\" content = \"initial-scale = 1.0, user-scalable = no, width = 320\"/></head>\
-                            <body style=\"background:#000;margin-top:0px;margin-left:0px\">\
-                            <iframe id=\"ytplayer\" type=\"text/html\" width=\"320\" height=\"240\"\
-                            src=\"%@\"\
-                            frameborder=\"0\"/>\
-                            </body></html>", url];
     
     
 //    NSString *htmlFile = [[NSBundle mainBundle] pathForResource:@"sample" ofType:@"html"];
 //    NSString* htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
 //    [webView loadHTMLString:htmlString baseURL:nil];
+    
+//
+    
+    
+    [self playVideoWithId:videoURLs];
+    
+    
+    
+//    NSString *url = [NSString stringWithFormat:@"https://www.youtube.com/v/%@?autoplay=1&playsinline=1&rel=0&playlist=", videoURLs[0]];
+//
+//    NSString *newString;
 //    
-    NSString *newString;
-    
-    for (int i = 1; i < [videoURLs count]; i++) {
-        newString = [htmlString stringByAppendingString:[NSString stringWithFormat:@"%@,", videoURLs[i]]];
-    }
-    
-    
-    [webPlayer loadHTMLString:newString baseURL:[NSURL URLWithString:@"http://www.youtube.com"]];
+//    for (int i = 1; i < [videoURLs count]; i++) {
+//        newString = [url stringByAppendingString:[NSString stringWithFormat:@"%@,", videoURLs[i]]];
+//    }
+//    NSString *htmlString = [NSString stringWithFormat:@"<html><head>\
+//                            <meta name = \"viewport\" content = \"initial-scale = 1.0, user-scalable = no, width = 320\"/></head>\
+//                            <body style=\"background:#000;margin-top:0px;margin-left:0px\">\
+//                            <iframe id=\"ytplayer\" type=\"text/html\" width=\"320\" height=\"240\"\
+//                            src=\"%@\"\
+//                            frameborder=\"0\"/>\
+//                            </body></html>", newString];
+//    
+//    NSLog(@"%@", htmlString);
+//    
+//
+//    
+//    [webPlayer loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:htmlString]]];
 
+}
+
+- (void)playVideoWithId:(NSMutableArray *)videoIDS {
+    NSLog(@"%@", videoIDS);
+    
+    NSString *arrayStr = [videoIDS componentsJoinedByString:@","];
+    NSString *jsFunc = [NSString stringWithFormat:@"methodName2([%@])", videoIDS];
+//    NSString *jsArr = [webPlayer stringByEvaluatingJavaScriptFromString:jsFunc];
+//    NSLog(@"YOOOO: %@", jsFunc);
+    
+    
+    NSString *html = [NSString stringWithFormat:youTubeVideoHTML, jsFunc, webPlayer.frame.size.width, webPlayer.frame.size.height];
+    
+    [webPlayer loadHTMLString:html baseURL:[[NSBundle mainBundle] resourceURL]];
 }
 
 - (void)playerView:(YTPlayerView *)playerView didChangeToState:(YTPlayerState)state {
