@@ -23,6 +23,18 @@
 @synthesize usernameLabel;
 @synthesize loginLabel;
 
+// fixes orientation issues that the user may have
+-(BOOL)shouldAutorotate {
+    return NO;
+}
+-(NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskAll;
+}
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -78,6 +90,11 @@
         
         //Firebase* users = [fb childByAppendingPath:@"users"];
         
+        if ([textField.text isEqualToString:@""]) {
+            
+        } else {
+
+        
         [self setUpNewUser:textField.text];
         
         [self addPlaylistToUser:textField.text playlist:@"YCHacks"];
@@ -90,6 +107,7 @@
         [self presentViewController:vc animated:YES completion:nil];
         
         textField.text = @"";
+        }
         
         return NO;
     }
@@ -105,6 +123,9 @@
         //Firebase* users = [fb childByAppendingPath:@"users"];
         
         //[self setUpNewUser:textField.text];
+        if ([textField.text isEqualToString:@""]) {
+            
+        } else {
         
         [[NSUserDefaults standardUserDefaults] setValue:textField.text forKey:@"username"];
         
@@ -113,6 +134,7 @@
         [self presentViewController:vc animated:YES completion:nil];
         
         textField.text = @"";
+        }
         
         return NO;
     }

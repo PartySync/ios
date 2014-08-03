@@ -11,7 +11,7 @@
 		0AACE87F198E855E009D2365 /* plus-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AACE87E198E855E009D2365 /* plus-512.png */; };
 		37B10636971E45C6B868427E /* libPods-YTBrowser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A3290F70954718AF2E16FF /* libPods-YTBrowser.a */; };
 		3817FA28198E66D600574182 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 3817FA27198E66D600574182 /* background.png */; };
-		3817FA2A198E678400574182 /* line.png in Resources */ = {isa = PBXBuildFile; fileRef = 3817FA29198E678400574182 /* line.png */; };
+		3888889E198EA07B009573E2 /* back-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 3888889D198EA07B009573E2 /* back-50.png */; };
 		3890A06E198D9F5900EC2597 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3890A022198D9F5900EC2597 /* JSONModel.m */; };
 		3890A06F198D9F5900EC2597 /* JSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 3890A024198D9F5900EC2597 /* JSONModelArray.m */; };
 		3890A070198D9F5900EC2597 /* JSONModelClassProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 3890A026198D9F5900EC2597 /* JSONModelClassProperty.m */; };
@@ -68,7 +68,7 @@
 		0AACE87E198E855E009D2365 /* plus-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-512.png"; sourceTree = "<group>"; };
 		15A3290F70954718AF2E16FF /* libPods-YTBrowser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YTBrowser.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3817FA27198E66D600574182 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = SOURCE_ROOT; };
-		3817FA29198E678400574182 /* line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line.png; sourceTree = "<group>"; };
+		3888889D198EA07B009573E2 /* back-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-50.png"; sourceTree = "<group>"; };
 		3890A021198D9F5900EC2597 /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; };
 		3890A022198D9F5900EC2597 /* JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModel.m; sourceTree = "<group>"; };
 		3890A023198D9F5900EC2597 /* JSONModelArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelArray.h; sourceTree = "<group>"; };
@@ -308,9 +308,9 @@
 		3890A091198DA1AD00EC2597 /* YTBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				3888889D198EA07B009573E2 /* back-50.png */,
 				0AACE87E198E855E009D2365 /* plus-512.png */,
 				3817FA27198E66D600574182 /* background.png */,
-				3817FA29198E678400574182 /* line.png */,
 				3890A092198DA1AD00EC2597 /* AppDelegate.h */,
 				3890A093198DA1AD00EC2597 /* AppDelegate.m */,
 				3890A0B4198DDF3100EC2597 /* LoginViewController.h */,
@@ -453,12 +453,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3890A0B3198DDCAF00EC2597 /* Images.xcassets in Resources */,
+				3888889E198EA07B009573E2 /* back-50.png in Resources */,
 				0AACE87F198E855E009D2365 /* plus-512.png in Resources */,
 				3817FA28198E66D600574182 /* background.png in Resources */,
 				3890A0A4198DA1AD00EC2597 /* MainStoryboard.storyboard in Resources */,
 				3890A0A3198DA1AD00EC2597 /* InfoPlist.strings in Resources */,
 				3890A0B0198DCFEA00EC2597 /* YTPlayerView-iframe-player.html in Resources */,
-				3817FA2A198E678400574182 /* line.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

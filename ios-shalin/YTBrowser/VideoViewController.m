@@ -25,6 +25,17 @@
 @synthesize playlistName;
 @synthesize backButton;
 
+// fixes orientation issues that the user may have
+-(BOOL)shouldAutorotate {
+    return NO;
+}
+-(NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskAll;
+}
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
+}
+
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -68,14 +79,42 @@
     [backButton addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
 
     
-    [videolist observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
+    [videolist observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         // Add the chat message to the array.
-        [videos addObject:snapshot.value];
+        //NSLog(@"%@",snapshot.value);
+        
+        
+        
+        NSArray *keys = [snapshot.value allKeys];
+        NSMutableArray *urls = [NSMutableArray new];
+        if (keys.count == 0 || !keys) {
+        } else {
+            NSLog(@"madeit");
+            for (NSString *key in keys) {
+                [videos addObject:snapshot.value[key][@"url"]];
+            }
+        }
+        
         // Reload the table view so the new message will show up.
         
         [tableView reloadData];
         
     }];
+    
+    
+//    [videolist observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
+//        // Add the chat message to the array.
+//        //NSLog(@"%@",snapshot.value);
+//        
+//        
+//        
+//        [videos addObject:snapshot.value[@"url"]];
+//        
+//        // Reload the table view so the new message will show up.
+//        
+//        [tableView reloadData];
+//        
+//    }];
     
     Firebase* theplaylistloc = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://youparty.firebaseio.com/playlists/%@",badvariablenames]];
     
@@ -96,8 +135,11 @@
 
 -(void) moveToLiveView
 {
-    LivePlayViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"LivePlayView"];
-    [self presentViewController:vc animated:YES completion:nil];
+    if([videos count] >= 1)
+    {
+        LivePlayViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"LivePlayView"];
+        [self presentViewController:vc animated:YES completion:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -167,9 +209,9 @@
     cell.backgroundColor = [UIColor clearColor];
     cell.textColor = [UIColor whiteColor];
     
-    NSDictionary* chatMessage = [videos objectAtIndex:index.row];
+    NSString* urlInString = [videos objectAtIndex:index.row];
     
-    NSData *data=[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://gdata.youtube.com/feeds/api/videos/%@?v=2&alt=jsonc",chatMessage[@"url"]]]];
+    NSData *data=[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://gdata.youtube.com/feeds/api/videos/%@?v=2&alt=jsonc",urlInString]]];
     NSError *error=nil;
     NSDictionary *response=[NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error:&error];
     //NSString* sth=[response objectForKey: @"some_your_key"];
@@ -184,10 +226,10 @@
     title.text = titlestring;//chatMessage[@"name"];
     [title sizeToFit];
     
-    detail.text = [NSString stringWithFormat:@"youtube.com/%@",chatMessage[@"url"]];
+    detail.text = [NSString stringWithFormat:@"%d",index.row];//[NSString stringWithFormat:@"youtube.com/%@",chatMessage[@"url"]];
     [detail sizeToFit];
     
-    NSString* url = [NSString stringWithFormat:@"http://img.youtube.com/vi/%@/0.jpg",chatMessage[@"url"]];
+    NSString* url = [NSString stringWithFormat:@"http://img.youtube.com/vi/%@/0.jpg",urlInString];
     
     thumbnail.image = [UIImage imageNamed:@"thumbnail.png"];
     

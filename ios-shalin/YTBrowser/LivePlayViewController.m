@@ -183,8 +183,6 @@
     return cell;
 }
 -(void) updatePlaylist {
-    
-    //[player playVideo];
     if (currentVid == 0 || currentVid == nil) {
         [player loadWithVideoId:[NSString stringWithFormat:@"%@", videoURLs[videoNumber]]];
     } else {
