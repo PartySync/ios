@@ -45,6 +45,8 @@
     
     Firebase* user = [[[fb childByAppendingPath:@"users"] childByAppendingPath:[[NSUserDefaults standardUserDefaults] stringForKey:@"username"]] childByAppendingPath:@"playlists"];
     
+    NSLog([user description]);
+    
     playlistLabel.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"add a playlist" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     
     playlistLabel.layer.borderColor = [[UIColor whiteColor] CGColor];
