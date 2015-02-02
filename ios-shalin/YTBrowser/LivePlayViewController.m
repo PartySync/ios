@@ -36,11 +36,11 @@
     videoURLs = [[NSMutableArray alloc] init];
     videos = [[NSMutableArray alloc] init];
     
-    NSString* badvariablenames = [[NSUserDefaults standardUserDefaults] stringForKey:@"playlistname"];
+    NSString* badvariablenames = [[NSUserDefaults standardUserDefaults] stringForKey:@"username"];
     
     //NSLog(badvariablenames);
     
-    NSString *hi = [NSString stringWithFormat:@"https://youparty.firebaseio.com/playlists/%@/videos",badvariablenames];
+    NSString *hi = [NSString stringWithFormat:@"https://youparty.firebaseio.com/%@/queue",badvariablenames];
     
     Firebase *videolist = [[Firebase alloc] initWithUrl:hi];
     
@@ -61,14 +61,14 @@
         
     }];
     
-    Firebase* firebaseRef = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://youparty.firebaseio.com/playlists/%@/",badvariablenames]];
+    Firebase* firebaseRef = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://youparty.firebaseio.com/%@",badvariablenames]];
     
     [firebaseRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        NSLog(@"%f",[snapshot.value[@"currentVidTime"] floatValue]);
-        NSLog(@"%f",[snapshot.value[@"currentVid"] floatValue]);
+//        NSLog(@"%f",[snapshot.value[@"currentVidTime"] floatValue]);
+        NSLog(@"%f",[snapshot.value[@"time"] floatValue]);
         
-        currentTime = [snapshot.value[@"currentVidTime"] floatValue];
-        currentVid = snapshot.value[@"currentVid"];
+        currentTime = [snapshot.value[@"time"] floatValue];
+//        currentVid = snapshot.value[@"currentVid"];
     }];
     
     player.delegate = self;
@@ -149,9 +149,9 @@
     
     NSDictionary* chatMessage = [videos objectAtIndex:index.row];
     
-    [videoURLs addObject:chatMessage[@"url"]];
+    [videoURLs addObject:chatMessage];
     
-    NSData *data=[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://gdata.youtube.com/feeds/api/videos/%@?v=2&alt=jsonc",chatMessage[@"url"]]]];
+    NSData *data=[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://gdata.youtube.com/feeds/api/videos/%@?v=2&alt=jsonc",chatMessage]]];
     NSError *error=nil;
     NSDictionary *response=[NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error:&error];
     //NSString* sth=[response objectForKey: @"some_your_key"];
@@ -167,10 +167,10 @@
     [title sizeToFit];
     
     
-    detail.text = [NSString stringWithFormat:@"youtube.com/%@",chatMessage[@"url"]];
+    detail.text = [NSString stringWithFormat:@"youtube.com/%@",chatMessage];
     [detail sizeToFit];
     
-    NSString* url = [NSString stringWithFormat:@"http://img.youtube.com/vi/%@/0.jpg",chatMessage[@"url"]];
+    NSString* url = [NSString stringWithFormat:@"http://img.youtube.com/vi/%@/0.jpg",chatMessage];
     
     thumbnail.image = [UIImage imageNamed:@"thumbnail.png"];
     

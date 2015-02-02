@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>B8C10387-2AE4-4D4D-9EBF-0447775FE3B7</string>
+	<string>FDF406EC-CB6C-498A-80C0-2E68A112A145</string>
 	<key>IDESourceControlProjectName</key>
 	<string>youParty</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -14,11 +14,11 @@
 		<string>https://github.com/youparty/ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ios-shalin/youParty.xcworkspace</string>
+	<string>ios-shalin/youParty.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>C15EC9D3C24E59DC02B791E16239BED873D20274</key>
-		<string>../..</string>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/youparty/ios.git</string>

@@ -62,13 +62,15 @@
     // Do any additional setup after loading the view.
     videos = [[NSMutableArray alloc] init];
     
-    NSString* badvariablenames = [[NSUserDefaults standardUserDefaults] stringForKey:@"playlistname"];
+//    [videos addObject:@"DpSaTrW4leg"];
+    
+    NSString* badvariablenames = [[NSUserDefaults standardUserDefaults] stringForKey:@"username"];
     
     //NSLog(badvariablenames);
     
-    NSString *hi = [NSString stringWithFormat:@"https://youparty.firebaseio.com/playlists/%@/videos",badvariablenames];
+    NSString *hi = [NSString stringWithFormat:@"https://youparty.firebaseio.com/%@",badvariablenames];
     
-    Firebase* videolist = [[Firebase alloc] initWithUrl:hi];
+    Firebase* videolist = [[[Firebase alloc] initWithUrl:hi] childByAppendingPath:@"queue"];
     
     //NSLog(@"%@", videolist.description);
     
@@ -86,14 +88,18 @@
         
         
         NSArray *keys = [snapshot.value allKeys];
-        NSMutableArray *urls = [NSMutableArray new];
+        NSLog(@"%@",keys);
+//        NSMutableArray *urls = [NSMutableArray new];
         if (keys.count == 0 || !keys) {
         } else {
             NSLog(@"madeit");
+//            NSLog(@"%@",snapshot.value);
             for (NSString *key in keys) {
-                [videos addObject:snapshot.value[key][@"url"]];
+                NSLog(@"%@ ,%@",key,snapshot.value[key]);
+                [videos addObject:snapshot.value[key]];
             }
         }
+        
         
         // Reload the table view so the new message will show up.
         
@@ -116,16 +122,16 @@
 //        
 //    }];
     
-    Firebase* theplaylistloc = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://youparty.firebaseio.com/playlists/%@",badvariablenames]];
-    
-    [theplaylistloc observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        
-        //NSLog(@"%@",snapshot.value[@"name"]);
-        
-            playlistName.text = snapshot.value[@"name"];
-        
-        
-    }];
+//    Firebase* theplaylistloc = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://youparty.firebaseio.com/playlists/%@",badvariablenames]];
+//    
+//    [theplaylistloc observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+//        
+//        //NSLog(@"%@",snapshot.value[@"name"]);
+//        
+//            playlistName.text = snapshot.value[@"name"];
+//        
+//        
+//    }];
 }
 
 -(void) goBack

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0A7106F7198E28B800298904 /* LivePlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7106F6198E28B800298904 /* LivePlayViewController.m */; };
 		0AACE87F198E855E009D2365 /* plus-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AACE87E198E855E009D2365 /* plus-512.png */; };
-		37B10636971E45C6B868427E /* libPods-YTBrowser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A3290F70954718AF2E16FF /* libPods-YTBrowser.a */; };
 		3817FA28198E66D600574182 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 3817FA27198E66D600574182 /* background.png */; };
 		3888889E198EA07B009573E2 /* back-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 3888889D198EA07B009573E2 /* back-50.png */; };
 		3890A06E198D9F5900EC2597 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3890A022198D9F5900EC2597 /* JSONModel.m */; };
@@ -175,7 +174,6 @@
 				3890A0C0198DE81B00EC2597 /* UIKit.framework in Frameworks */,
 				3890A0BF198DE81200EC2597 /* QuartzCore.framework in Frameworks */,
 				3890A0BE198DE80A00EC2597 /* CoreText.framework in Frameworks */,
-				37B10636971E45C6B868427E /* libPods-YTBrowser.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,7 +623,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YTBrowser/YTBrowser-Prefix.pch";
 				INFOPLIST_FILE = "YTBrowser/YTBrowser-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
@@ -644,7 +642,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YTBrowser/YTBrowser-Prefix.pch";
 				INFOPLIST_FILE = "YTBrowser/YTBrowser-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",

@@ -52,7 +52,21 @@
     
     NSLog(@"Embed video id: %@", videoId);
     
-    [self.playerView loadWithVideoId:[NSString stringWithFormat:@"%@", videoId]];\
+//    [self.playerView loadWithVideoId:[NSString stringWithFormat:@"%@", videoId]];\
+    
+    
+    
+    
+    
+    [self displayGoogleVideo];
+    
+    
+    
+    
+    
+    
+    
+    
     
     [addButton addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
     
@@ -60,6 +74,37 @@
 
     
     [super viewDidLoad];
+}
+
+
+- (void) displayGoogleVideo
+
+{
+    
+    CGRect rect = [[UIScreen mainScreen] bounds];
+    
+    CGSize screenSize = rect.size;
+    
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,screenSize.width,screenSize.height)];
+    
+    webView.autoresizesSubviews = YES;
+    
+    webView.autoresizingMask=(UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
+    
+    NSString *videoUrl = @"http://www.youtube.com/v/oHg5SJYRHA0"; // valid youtube url
+    
+    
+    NSString *htmlString = [NSString stringWithFormat:@"<html><head><meta name = \"viewport\" content = \"initial-scale = 1.0, user-scalable = no, width = 212\"/></head><body style=\"background:#F00;margin-top:0px;margin-left:0px\"><div><object width=\"320\" height=\"480\"><param name=\"movie\" value=\"%@\"></param><param name=\"wmode\" value=\"transparent\"></param><embed src=\"%@\" type=\"application/x-shockwave-flash\" wmode=\"transparent\" width=\"320\" height=\"480\"></embed></object></div></body></html>",videoUrl,videoUrl]    ;
+    
+    
+    
+    [webView loadHTMLString:htmlString baseURL:[NSURL URLWithString:@"http://www.youtube.com"]];
+    
+    
+    [self.view addSubview:webView];
+    
+//    [webView release]; 
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -96,12 +141,16 @@
 {
     //NSLog(videoId);
     
-    Firebase* fb = [[Firebase alloc] initWithUrl:@"https://youparty.firebaseio.com/"];
-    Firebase* playlists = [fb childByAppendingPath:@"playlists"];
-    Firebase* theplaylist = [playlists childByAppendingPath:[[NSUserDefaults standardUserDefaults] stringForKey:@"playlistname"]];
-    Firebase* videos = [theplaylist childByAppendingPath:@"videos"];
-    Firebase* video = [videos childByAutoId];
-    [video setValue:@{@"name": @"Added with ios",@"url": videoId}];
+    NSString* playlist = [[NSUserDefaults standardUserDefaults] stringForKey:@"username"];
+    NSLog(@"%@ llololol",playlist);
+    
+    Firebase* fb = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://youparty.firebaseio.com/%@",playlist]];
+        Firebase* playlists = [fb childByAppendingPath:@"queue"];
+    NSLog(playlists.description);
+//    Firebase* theplaylist = [fb childByAppendingPath:];
+//    Firebase* videos = [theplaylist childByAppendingPath:@"queue"];
+    Firebase* video = [playlists childByAutoId];
+    [video setValue:videoId];
     
     [self backButtonAction];
 

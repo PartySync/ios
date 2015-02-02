@@ -41,6 +41,10 @@
     
     // Create a reference to a Firebase location
     fb = [[Firebase alloc] initWithUrl:@"https://youparty.firebaseio.com/"];
+    
+    NSLog(fb.description);
+//    [[fb childByAppendingPath:@"ssdsd"] setValue:@"testerino"];
+    
     // Write data to Firebase
     usernameLabel.delegate = self;
     loginLabel.delegate = self;
@@ -103,7 +107,7 @@
         
         [[NSUserDefaults standardUserDefaults] setValue:textField.text forKey:@"username"];
         
-        PlaylistViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"PlaylistView"];
+        PlaylistViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"VideosView"];
         [self presentViewController:vc animated:YES completion:nil];
         
         textField.text = @"";
@@ -126,10 +130,11 @@
         if ([textField.text isEqualToString:@""]) {
             
         } else {
+            //make upper
         
-        [[NSUserDefaults standardUserDefaults] setValue:textField.text forKey:@"username"];
+        [[NSUserDefaults standardUserDefaults] setValue:[textField.text uppercaseString] forKey:@"username"];
         
-        PlaylistViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"PlaylistView"];
+        PlaylistViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"VideosView"];
         
         [self presentViewController:vc animated:YES completion:nil];
         
