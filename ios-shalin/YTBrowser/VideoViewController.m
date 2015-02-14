@@ -9,6 +9,7 @@
 #import "VideoViewController.h"
 #import "ViewController.h"
 #import "LivePlayViewController.h"
+#import "PBJViewController.h"
 
 @interface VideoViewController ()
 
@@ -22,7 +23,7 @@
 @synthesize tableView;
 @synthesize playButton;
 @synthesize vidButton;
-@synthesize playlistName;
+//@synthesize playlistName;
 @synthesize backButton;
 
 // fixes orientation issues that the user may have
@@ -141,11 +142,19 @@
 
 -(void) moveToLiveView
 {
-    if([videos count] >= 1)
-    {
-        LivePlayViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"LivePlayView"];
-        [self presentViewController:vc animated:YES completion:nil];
-    }
+//    if([videos count] >= 1)
+//    {
+//        LivePlayViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"LivePlayView"];
+//        [self presentViewController:vc animated:YES completion:nil];
+//    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[videos objectAtIndex:0] forKey:@"videourl"];
+    NSLog(@"vid at %@",[videos objectAtIndex:0]);
+    
+    PBJViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"CustomPlayer"];
+    
+    [self presentViewController:vc animated:YES completion:nil];
+
 }
 
 - (void)didReceiveMemoryWarning

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hh3-fH-nPQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hh3-fH-nPQ">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--YouTube search-->
@@ -313,13 +313,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="WTx-cK-ba0">
-                                <rect key="frame" x="0.0" y="-1" width="320" height="576"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="Beo-gE-JMe"/>
-                                    <constraint firstAttribute="height" constant="576" id="XIO-AI-cDF"/>
-                                </constraints>
-                            </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eOF-mv-4GL" customClass="YTPlayerView">
                                 <rect key="frame" x="0.0" y="65" width="320" height="153"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -339,6 +332,13 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="WTx-cK-ba0">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="576"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="Beo-gE-JMe"/>
+                                    <constraint firstAttribute="height" constant="576" id="XIO-AI-cDF"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -367,6 +367,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xjz-48-qdx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="621" y="43"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="w6a-vS-z6w">
+            <objects>
+                <viewController storyboardIdentifier="CustomPlayer" id="hCc-jJ-lAe" customClass="PBJViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="thX-YJ-cPL"/>
+                        <viewControllerLayoutGuide type="bottom" id="k3o-HM-UbM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="spO-f9-agj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehq-xD-5Mh">
+                                <rect key="frame" x="20" y="11" width="280" height="35"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aau-8o-bC6">
+                                <rect key="frame" x="11" y="156" width="299" height="30"/>
+                                <state key="normal" title="gautam pls why does it take so long to load">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eNo-rq-Esr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2028" y="-14"/>
         </scene>
     </scenes>
     <resources>

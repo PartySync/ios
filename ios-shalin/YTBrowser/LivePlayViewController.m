@@ -8,6 +8,7 @@
 
 #import "LivePlayViewController.h"
 #import <Firebase/Firebase.h>
+#import "PBJVideoPlayerController.h"
 
 @interface LivePlayViewController ()
 
@@ -71,8 +72,34 @@
 //        currentVid = snapshot.value[@"currentVid"];
     }];
     
-    player.delegate = self;
     
+   
+
+
+    
+    
+    
+    
+}
+
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData*)data
+{
+    // allocate controller
+    PBJVideoPlayerController* videoPlayerController = [[PBJVideoPlayerController alloc] init];
+    videoPlayerController.delegate = self;
+    videoPlayerController.view.frame = self.view.bounds;
+    
+    // setup media
+    videoPlayerController.videoPath = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]");
+    
+    // present
+    [self addChildViewController:videoPlayerController];
+    [self.view addSubview:videoPlayerController.view];
+    [videoPlayerController didMoveToParentViewController:self];
+    
+    player.delegate = self;
 }
 
 
@@ -87,10 +114,10 @@
         [self updatePlaylist];
     });
     
-    dispatch_time_t countdownTime2 = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC));
-    dispatch_after(countdownTime2, dispatch_get_main_queue(), ^(void){
-        [player playVideo];
-    });
+//    dispatch_time_t countdownTime2 = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC));
+//    dispatch_after(countdownTime2, dispatch_get_main_queue(), ^(void){
+//        [player playVideo];
+//    });
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView

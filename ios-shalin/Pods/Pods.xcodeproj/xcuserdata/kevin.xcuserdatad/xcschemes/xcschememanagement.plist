@@ -6,23 +6,33 @@
 	<dict>
 		<key>Pods-YTBrowser-Firebase.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-YTBrowser-PBJVideoPlayer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-YTBrowser.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>9E6BA418F6E845058F0CFFC6</key>
+		<key>1A1393E696A744899186A870</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FDE8313C23834E77850D9050</key>
+		<key>44DB00D72B9E42519C73F64A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F2A2B956FE184216ACF3A03B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

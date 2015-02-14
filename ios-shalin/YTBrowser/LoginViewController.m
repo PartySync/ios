@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "PlaylistViewController.h"
+#import "PBJViewController.h"
 
 @interface LoginViewController ()
 
@@ -137,6 +138,7 @@
         PlaylistViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"VideosView"];
         
         [self presentViewController:vc animated:YES completion:nil];
+            
         
         textField.text = @"";
         }

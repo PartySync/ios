@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0A7106F7198E28B800298904 /* LivePlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7106F6198E28B800298904 /* LivePlayViewController.m */; };
 		0AACE87F198E855E009D2365 /* plus-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AACE87E198E855E009D2365 /* plus-512.png */; };
+		0ABE17461A807221004CD70B /* PBJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABE17451A807221004CD70B /* PBJViewController.m */; };
 		3817FA28198E66D600574182 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 3817FA27198E66D600574182 /* background.png */; };
 		3888889E198EA07B009573E2 /* back-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 3888889D198EA07B009573E2 /* back-50.png */; };
 		3890A06E198D9F5900EC2597 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3890A022198D9F5900EC2597 /* JSONModel.m */; };
@@ -59,12 +60,15 @@
 		9CA6246D169598BC003F6334 /* VideoLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA62468169598BC003F6334 /* VideoLink.m */; };
 		9CA6246E169598BC003F6334 /* VideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6246A169598BC003F6334 /* VideoModel.m */; };
 		9CA624811695A2D5003F6334 /* MediaThumbnail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA624801695A2D5003F6334 /* MediaThumbnail.m */; };
+		DD3A94EECE8E4D039DF32B73 /* libPods-YTBrowser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A3290F70954718AF2E16FF /* libPods-YTBrowser.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0A7106F5198E28B800298904 /* LivePlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePlayViewController.h; sourceTree = "<group>"; };
 		0A7106F6198E28B800298904 /* LivePlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePlayViewController.m; sourceTree = "<group>"; };
 		0AACE87E198E855E009D2365 /* plus-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-512.png"; sourceTree = "<group>"; };
+		0ABE17441A807221004CD70B /* PBJViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBJViewController.h; sourceTree = "<group>"; };
+		0ABE17451A807221004CD70B /* PBJViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBJViewController.m; sourceTree = "<group>"; };
 		15A3290F70954718AF2E16FF /* libPods-YTBrowser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YTBrowser.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3817FA27198E66D600574182 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = SOURCE_ROOT; };
 		3888889D198EA07B009573E2 /* back-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-50.png"; sourceTree = "<group>"; };
@@ -174,6 +178,7 @@
 				3890A0C0198DE81B00EC2597 /* UIKit.framework in Frameworks */,
 				3890A0BF198DE81200EC2597 /* QuartzCore.framework in Frameworks */,
 				3890A0BE198DE80A00EC2597 /* CoreText.framework in Frameworks */,
+				DD3A94EECE8E4D039DF32B73 /* libPods-YTBrowser.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,13 +328,15 @@
 				3890A09F198DA1AD00EC2597 /* WebVideoViewController.m */,
 				0A7106F5198E28B800298904 /* LivePlayViewController.h */,
 				0A7106F6198E28B800298904 /* LivePlayViewController.m */,
-				3890A096198DA1AD00EC2597 /* MainStoryboard.storyboard */,
 				3890A094198DA1AD00EC2597 /* InfoPlist.strings */,
+				0ABE17441A807221004CD70B /* PBJViewController.h */,
+				0ABE17451A807221004CD70B /* PBJViewController.m */,
 				3890A099198DA1AD00EC2597 /* main.m */,
 				3890A09A198DA1AD00EC2597 /* PhotoBox.h */,
 				3890A09B198DA1AD00EC2597 /* PhotoBox.m */,
 				3890A0A0198DA1AD00EC2597 /* YTBrowser-Info.plist */,
 				3890A0A1198DA1AD00EC2597 /* YTBrowser-Prefix.pch */,
+				3890A096198DA1AD00EC2597 /* MainStoryboard.storyboard */,
 				3890A0B2198DDCAF00EC2597 /* Images.xcassets */,
 			);
 			path = YTBrowser;
@@ -533,6 +540,7 @@
 				3890A07E198D9F5900EC2597 /* MGBlockWrapper.m in Sources */,
 				3890A083198D9F5900EC2597 /* MGLineStyled.m in Sources */,
 				3890A0A8198DA1AD00EC2597 /* ViewController.m in Sources */,
+				0ABE17461A807221004CD70B /* PBJViewController.m in Sources */,
 				9CA624811695A2D5003F6334 /* MediaThumbnail.m in Sources */,
 				3890A070198D9F5900EC2597 /* JSONModelClassProperty.m in Sources */,
 				3890A0B6198DDF3100EC2597 /* LoginViewController.m in Sources */,

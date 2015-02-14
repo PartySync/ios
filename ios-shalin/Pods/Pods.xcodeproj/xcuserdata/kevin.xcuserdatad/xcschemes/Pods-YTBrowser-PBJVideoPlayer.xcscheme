@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1A1393E696A744899186A870"
-               BuildableName = "libPods-YTBrowser-Firebase.a"
-               BlueprintName = "Pods-YTBrowser-Firebase"
+               BlueprintIdentifier = "44DB00D72B9E42519C73F64A"
+               BuildableName = "libPods-YTBrowser-PBJVideoPlayer.a"
+               BlueprintName = "Pods-YTBrowser-PBJVideoPlayer"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

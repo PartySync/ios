@@ -1,10 +1,13 @@
 PODS:
   - Firebase (1.1.10)
+  - PBJVideoPlayer (0.1.11)
 
 DEPENDENCIES:
   - Firebase (>= 1.1.10)
+  - PBJVideoPlayer
 
 SPEC CHECKSUMS:
   Firebase: 299103c06b69ec2efe2478241c187d0d143c4fad
+  PBJVideoPlayer: 0891ebdda666f59fd372e8c3fa42a6cdffbe9d54
 
 COCOAPODS: 0.33.1
