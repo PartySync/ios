@@ -145,7 +145,7 @@ static NSString * PBJViewControllerVideoPath = @"http://distilleryvesper7-3.ak.i
 - (void)videoPlayerReady:(PBJVideoPlayerController *)videoPlayer
 {
     //NSLog(@"Max duration of the video: %f", videoPlayer.maxDuration);
-    [_videoPlayerController playFromTime:10];
+    [_videoPlayerController playFromTime:[[NSUserDefaults standardUserDefaults] floatForKey:@"videotime"]];
 
 }
 

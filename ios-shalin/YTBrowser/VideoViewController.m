@@ -108,6 +108,13 @@
         
     }];
     
+    Firebase* firetime = [[[Firebase alloc] initWithUrl:hi] childByAppendingPath:@"time"];
+    
+    [firetime observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        // do some stuff once
+        [[NSUserDefaults standardUserDefaults] setFloat:[snapshot.value floatValue] forKey:@"videotime"];
+    }];
+    
     
 //    [videolist observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
 //        // Add the chat message to the array.
@@ -148,6 +155,7 @@
 //        [self presentViewController:vc animated:YES completion:nil];
 //    }
     
+    [[NSUserDefaults standardUserDefaults] setObject:[videos objectAtIndex:0] forKey:@"videourl"];
     [[NSUserDefaults standardUserDefaults] setObject:[videos objectAtIndex:0] forKey:@"videourl"];
     NSLog(@"vid at %@",[videos objectAtIndex:0]);
     
